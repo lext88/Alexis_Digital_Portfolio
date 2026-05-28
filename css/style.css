@@ -2,18 +2,18 @@
  
 /* ─── RICE PALETTE ─────────────────────────────── */
 :root {
-  --navy:      #00205B;
-  --navy-mid:  #0a2d7a;
-  --navy-soft: #1a3f8f;
-  --gold:      #F0EDE4;   /* eggshell — replaces gold as accent */
-  --gold-light:#F7F5EF;   /* lighter eggshell */
+  --navy:      #00205B;   /* page background */
+  --navy-mid:  #051f54;   /* slightly deeper surface */
+  --navy-soft: #0a2d7a;   /* card/panel surface */
+  --gold:      #F0EDE4;   /* eggshell — primary text & accents */
+  --gold-light:#F7F5EF;   /* light eggshell */
   --gold-pale: #FAFAF7;   /* near-white eggshell */
-  --cream:     #F8F7F3;   /* eggshell white page bg */
-  --cream-mid: #EEE9DF;   /* slightly warmer surface */
-  --stone:     #D8D3C8;   /* border/divider tone */
-  --charcoal:  #1A1A2E;   /* deep navy-tinted text */
-  --mid-gray:  #5C637A;   /* blue-gray body text */
-  --light-gray:#9AA0B2;   /* muted blue-gray hints */
+  --cream:     #F0EDE4;   /* eggshell white — all text */
+  --cream-mid: #0d2660;   /* card hover / subtle surface */
+  --stone:     rgba(240,237,228,0.12); /* borders */
+  --charcoal:  #F0EDE4;   /* body text on dark bg */
+  --mid-gray:  rgba(240,237,228,0.65); /* secondary text */
+  --light-gray:rgba(240,237,228,0.38); /* muted text */
  
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'Outfit', sans-serif;
@@ -29,8 +29,8 @@ html { scroll-behavior: smooth; }
  
 body {
   font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--charcoal);
+  background: var(--navy);
+  color: var(--cream);
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
@@ -57,16 +57,16 @@ nav {
   justify-content: space-between;
   padding: 0 3.5rem;
   height: 68px;
-  background: rgba(248, 247, 243, 0.92);
+  background: rgba(0, 32, 91, 0.92);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0, 32, 91, 0.12);
+  border-bottom: 1px solid rgba(240, 237, 228, 0.1);
 }
  
 .nav-brand {
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--cream);
   text-decoration: none;
   letter-spacing: 0.01em;
 }
@@ -102,7 +102,7 @@ nav {
  
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--navy);
+  color: var(--cream);
 }
  
 .nav-links a:hover::after,
@@ -194,7 +194,7 @@ nav {
  
 .hero-name em {
   font-style: italic;
-  color: var(--navy-soft);
+  color: rgba(240,237,228,0.5);
 }
  
 .hero-tagline {
@@ -214,9 +214,9 @@ nav {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--cream);
   text-decoration: none;
-  border: 1px solid var(--navy);
+  border: 1px solid rgba(240,237,228,0.4);
   padding: 0.85rem 1.75rem;
   transition: background var(--transition), color var(--transition);
   cursor: pointer;
@@ -224,8 +224,8 @@ nav {
 }
  
 .hero-cta:hover {
-  background: var(--navy);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--navy);
 }
  
 .hero-cta svg { transition: transform var(--transition); }
@@ -256,7 +256,7 @@ nav {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
-  color: var(--navy);
+  color: var(--cream);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
@@ -264,7 +264,7 @@ nav {
 /* ─── HOME: PROJECTS GRID ─────────────────────── */
 .projects-section {
   padding: 6rem 3.5rem;
-  background: var(--cream-mid);
+  background: var(--navy);
   border-top: 1px solid var(--stone);
 }
  
@@ -276,12 +276,12 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5px;
-  background: var(--stone);
-  border: 1.5px solid var(--stone);
+  background: rgba(240,237,228,0.1);
+  border: 1.5px solid rgba(240,237,228,0.1);
 }
  
 .project-card {
-  background: var(--cream);
+  background: rgba(255,255,255,0.04);
   padding: 2.5rem 2rem;
   cursor: pointer;
   transition: background var(--transition);
@@ -297,13 +297,13 @@ nav {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--navy);
+  background: var(--cream);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
 }
  
-.project-card:hover { background: var(--cream-mid); }
+.project-card:hover { background: rgba(255,255,255,0.08); }
 .project-card:hover::before { transform: scaleX(1); }
  
 .card-number {
@@ -339,7 +339,7 @@ nav {
   font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 400;
-  color: var(--navy);
+  color: var(--cream);
   line-height: 1.2;
   margin-bottom: 0.75rem;
 }
@@ -363,8 +363,8 @@ nav {
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--navy);
-  border: 1px solid rgba(0,32,91,0.25);
+  color: var(--cream);
+  border: 1px solid rgba(240,237,228,0.3);
   padding: 0.25rem 0.65rem;
 }
  
@@ -372,7 +372,7 @@ nav {
   position: absolute;
   top: 2rem; right: 2rem;
   width: 28px; height: 28px;
-  border: 1px solid var(--stone);
+  border: 1px solid rgba(240,237,228,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,11 +380,11 @@ nav {
 }
  
 .project-card:hover .card-arrow {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: var(--cream);
+  border-color: var(--cream);
 }
  
-.project-card:hover .card-arrow svg { color: var(--cream); }
+.project-card:hover .card-arrow svg { color: var(--navy); }
  
 /* ─── PROJECT DETAIL PAGE ─────────────────────── */
 .project-hero {
@@ -409,13 +409,13 @@ nav {
   border: none;
 }
  
-.back-link:hover { color: var(--navy); }
+.back-link:hover { color: var(--cream); }
  
 .project-hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 300;
-  color: var(--navy);
+  color: var(--cream);
   line-height: 1.05;
   letter-spacing: -0.02em;
   max-width: 680px;
@@ -447,7 +447,7 @@ nav {
  
 .meta-item span {
   font-size: 0.9rem;
-  color: var(--charcoal);
+  color: var(--cream);
   font-weight: 500;
 }
  
@@ -472,7 +472,7 @@ nav {
  
 .image-slot {
   position: relative;
-  background: var(--cream-mid);
+  background: rgba(255,255,255,0.05);
   border: 1px solid var(--stone);
   aspect-ratio: 4/3;
   overflow: hidden;
@@ -512,7 +512,7 @@ nav {
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 400;
-  color: var(--navy);
+  color: var(--cream);
   line-height: 1.2;
   margin-bottom: 1.25rem;
 }
@@ -527,15 +527,15 @@ nav {
 .content-body:last-child { margin-bottom: 0; }
  
 .problem-callout {
-  border-left: 2px solid var(--navy-soft);
+  border-left: 2px solid rgba(240,237,228,0.5);
   padding: 1rem 1.25rem;
-  background: rgba(0, 32, 91, 0.04);
+  background: rgba(255,255,255,0.05);
   margin: 1.5rem 0;
 }
  
 .problem-callout p {
   font-size: 0.9rem;
-  color: var(--charcoal);
+  color: var(--cream);
   line-height: 1.7;
   font-style: italic;
 }
@@ -591,6 +591,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: rgba(255,255,255,0.03);
 }
  
 .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -609,7 +610,7 @@ nav {
 .form-group textarea {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--charcoal);
+  color: var(--cream);
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--stone);
@@ -620,9 +621,14 @@ nav {
   resize: none;
 }
  
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--light-gray);
+}
+ 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-bottom-color: var(--navy);
+  border-bottom-color: var(--cream);
 }
  
 .form-group textarea { min-height: 120px; }
@@ -647,7 +653,8 @@ nav {
  
 .form-submit:hover {
   background: transparent;
-  color: var(--navy);
+  color: var(--cream);
+  border-color: rgba(240,237,228,0.5);
 }
  
 .form-success {
