@@ -24,15 +24,14 @@
   <div id="page-home" class="page active">
  
     <!-- Hero -->
-    <section class="hero" style="background: var(--navy); min-height: calc(100vh - 68px);">
-      <h1 class="hero-name" style="color: var(--cream);">Your Name<em style="color: rgba(240,237,228,0.55); font-style:italic;">.</em></h1>
-      <p class="hero-tagline" style="color: rgba(240,237,228,0.6);">
+    <section class="hero">
+      <div class="hero-bg-mark"></div>
+      <p class="hero-eyebrow">Software Engineer</p>
+      <h1 class="hero-name">Your Name<em>.</em></h1>
+      <p class="hero-tagline">
         I build thoughtful software — from systems architecture to seamless user experiences.
       </p>
-      <button class="hero-cta" style="color: var(--cream); border-color: rgba(240,237,228,0.4);"
-        onmouseover="this.style.background='var(--cream)';this.style.color='var(--navy)';"
-        onmouseout="this.style.background='transparent';this.style.color='var(--cream)';"
-        onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
+      <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
         View Projects
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -43,6 +42,7 @@
     <!-- Projects -->
     <section class="projects-section">
       <div class="projects-header">
+        <p class="section-label">Selected Work</p>
         <h2 class="section-heading">Three projects.</h2>
       </div>
  
@@ -57,7 +57,11 @@
           </div>
           <h3 class="card-title">Project One</h3>
           <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
-          
+          <div class="card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">API</span>
+          </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M7 17L17 7M17 7H7M17 7v10"/>
@@ -73,7 +77,11 @@
           </div>
           <h3 class="card-title">Project Two</h3>
           <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
-          
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">ML</span>
+            <span class="tag">Data</span>
+          </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M7 17L17 7M17 7H7M17 7v10"/>
@@ -89,7 +97,11 @@
           </div>
           <h3 class="card-title">Project Three</h3>
           <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
-          
+          <div class="card-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Systems</span>
+            <span class="tag">Linux</span>
+          </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M7 17L17 7M17 7H7M17 7v10"/>
@@ -486,7 +498,7 @@
  
     </div>
  
-    <footer style="background: var(--cream);">
+    <footer>
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
