@@ -178,7 +178,7 @@ nav {
   content: '';
   display: inline-block;
   width: 32px; height: 1px;
-  background: var(--navy-soft);
+  background: var(--cream);
 }
  
 .hero-name {
@@ -186,7 +186,7 @@ nav {
   font-size: clamp(3.5rem, 8vw, 7rem);
   font-weight: 300;
   line-height: 1.05;
-  color: var(--navy);
+  color: var(--cream);
   letter-spacing: -0.02em;
   margin-bottom: 1.75rem;
   max-width: 680px;
@@ -237,7 +237,7 @@ nav {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--navy-soft);
+  color: var(--cream);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
