@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
+ 
   <!-- ─── NAV ─────────────────────────────────── -->
   <nav>
     <a class="nav-brand" href="#" onclick="showPage('home')">Your Name</a>
@@ -16,38 +16,44 @@
       <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
     </ul>
   </nav>
-
-
+ 
+ 
   <!-- ════════════════════════════════════════════
        HOME PAGE
   ════════════════════════════════════════════ -->
   <div id="page-home" class="page active">
-
+ 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" style="background: var(--navy); min-height: calc(100vh - 68px);">
       <div class="hero-bg-mark"></div>
-      <p class="hero-eyebrow">Software Engineer</p>
-      <h1 class="hero-name">Your Name<em>.</em></h1>
-      <p class="hero-tagline">
+      <p class="hero-eyebrow" style="color: rgba(240,237,228,0.7);">
+        <span style="display:inline-block;width:32px;height:1px;background:rgba(240,237,228,0.5);"></span>
+        Software Engineer
+      </p>
+      <h1 class="hero-name" style="color: var(--cream);">Your Name<em style="color: rgba(240,237,228,0.55); font-style:italic;">.</em></h1>
+      <p class="hero-tagline" style="color: rgba(240,237,228,0.6);">
         I build thoughtful software — from systems architecture to seamless user experiences.
       </p>
-      <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
+      <button class="hero-cta" style="color: var(--cream); border-color: rgba(240,237,228,0.4);"
+        onmouseover="this.style.background='var(--cream)';this.style.color='var(--navy)';"
+        onmouseout="this.style.background='transparent';this.style.color='var(--cream)';"
+        onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
         View Projects
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </button>
     </section>
-
+ 
     <!-- Projects -->
     <section class="projects-section">
       <div class="projects-header">
         <p class="section-label">Selected Work</p>
         <h2 class="section-heading">Three projects.</h2>
       </div>
-
+ 
       <div class="projects-grid">
-
+ 
         <!-- Card 1 -->
         <div class="project-card" onclick="showProject(1)">
           <p class="card-number">01 ─────</p>
@@ -68,7 +74,7 @@
             </svg>
           </div>
         </div>
-
+ 
         <!-- Card 2 -->
         <div class="project-card" onclick="showProject(2)">
           <p class="card-number">02 ─────</p>
@@ -88,7 +94,7 @@
             </svg>
           </div>
         </div>
-
+ 
         <!-- Card 3 -->
         <div class="project-card" onclick="showProject(3)">
           <p class="card-number">03 ─────</p>
@@ -108,22 +114,22 @@
             </svg>
           </div>
         </div>
-
+ 
       </div><!-- /.projects-grid -->
     </section>
-
+ 
     <footer>
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
   </div><!-- /#page-home -->
-
-
+ 
+ 
   <!-- ════════════════════════════════════════════
        PROJECT 1 PAGE
   ════════════════════════════════════════════ -->
   <div id="page-project-1" class="page">
-
+ 
     <div class="project-hero">
       <button class="back-link" onclick="showPage('home')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -151,9 +157,9 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="project-content">
-
+ 
       <!-- Block 1: Overview -->
       <div class="content-block">
         <div class="image-slot">
@@ -182,7 +188,7 @@
           </p>
         </div>
       </div>
-
+ 
       <!-- Block 2: The Problem -->
       <div class="content-block reverse">
         <div class="image-slot">
@@ -208,7 +214,7 @@
           </p>
         </div>
       </div>
-
+ 
       <!-- Block 3: Outcome -->
       <div class="content-block">
         <div class="image-slot">
@@ -231,21 +237,21 @@
           </p>
         </div>
       </div>
-
+ 
     </div><!-- /.project-content -->
-
+ 
     <footer>
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
   </div><!-- /#page-project-1 -->
-
-
+ 
+ 
   <!-- ════════════════════════════════════════════
        PROJECT 2 PAGE
   ════════════════════════════════════════════ -->
   <div id="page-project-2" class="page">
-
+ 
     <div class="project-hero">
       <button class="back-link" onclick="showPage('home')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -273,9 +279,9 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="project-content">
-
+ 
       <div class="content-block">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -293,7 +299,7 @@
           <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
         </div>
       </div>
-
+ 
       <div class="content-block reverse">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -314,7 +320,7 @@
           <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
         </div>
       </div>
-
+ 
       <div class="content-block">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -332,21 +338,21 @@
           <p class="content-body">What would you do differently? What did this project teach you?</p>
         </div>
       </div>
-
+ 
     </div>
-
+ 
     <footer>
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
   </div><!-- /#page-project-2 -->
-
-
+ 
+ 
   <!-- ════════════════════════════════════════════
        PROJECT 3 PAGE
   ════════════════════════════════════════════ -->
   <div id="page-project-3" class="page">
-
+ 
     <div class="project-hero">
       <button class="back-link" onclick="showPage('home')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -374,9 +380,9 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="project-content">
-
+ 
       <div class="content-block">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -394,7 +400,7 @@
           <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
         </div>
       </div>
-
+ 
       <div class="content-block reverse">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -415,7 +421,7 @@
           <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
         </div>
       </div>
-
+ 
       <div class="content-block">
         <div class="image-slot">
           <div class="image-placeholder">
@@ -433,22 +439,22 @@
           <p class="content-body">What would you do differently? What did this project teach you?</p>
         </div>
       </div>
-
+ 
     </div>
-
+ 
     <footer>
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
   </div><!-- /#page-project-3 -->
-
-
+ 
+ 
   <!-- ════════════════════════════════════════════
        CONTACT PAGE
   ════════════════════════════════════════════ -->
   <div id="page-contact" class="page">
     <div class="contact-wrap">
-
+ 
       <div class="contact-left">
         <p class="section-label">Let's Talk</p>
         <h2 class="contact-heading">Get in touch.</h2>
@@ -456,7 +462,7 @@
           Whether it's a project opportunity, collaboration, or just a question — I'm happy to hear from you. I'll respond within a few days.
         </p>
       </div>
-
+ 
       <div class="contact-right">
         <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-group">
@@ -495,16 +501,16 @@
           4. Remove the handleSubmit function from the JS
         -->
       </div>
-
+ 
     </div>
-
+ 
     <footer style="background: var(--cream);">
       <p>© 2025 Your Name</p>
       <p>Built with intention.</p>
     </footer>
   </div><!-- /#page-contact -->
-
-
+ 
+ 
   <script src="js/main.js"></script>
 </body>
 </html>
