@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────── -->
+  <nav>
+    <a class="nav-brand" href="#" onclick="showPage('home')">Your Name</a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')" class="active" data-page="home">Work</a></li>
+      <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════
+       HOME PAGE
+  ════════════════════════════════════════════ -->
+  <div id="page-home" class="page active">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg-mark"></div>
+      <p class="hero-eyebrow">Software Engineer</p>
+      <h1 class="hero-name">Your Name<em>.</em></h1>
+      <p class="hero-tagline">
+        I build thoughtful software — from systems architecture to seamless user experiences.
+      </p>
+      <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
+        View Projects
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects-section">
+      <div class="projects-header">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-heading">Three projects.</h2>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Card 1 -->
+        <div class="project-card" onclick="showProject(1)">
+          <p class="card-number">01 ─────</p>
+          <div class="card-thumb" id="thumb-1">
+            <!-- Replace the line below with: <img src="projects/images/project1-thumb.jpg" alt="Project 1"> -->
+            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+          </div>
+          <h3 class="card-title">Project One</h3>
+          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <div class="card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">API</span>
+          </div>
+          <div class="card-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="project-card" onclick="showProject(2)">
+          <p class="card-number">02 ─────</p>
+          <div class="card-thumb" id="thumb-2">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+          </div>
+          <h3 class="card-title">Project Two</h3>
+          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">ML</span>
+            <span class="tag">Data</span>
+          </div>
+          <div class="card-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="project-card" onclick="showProject(3)">
+          <p class="card-number">03 ─────</p>
+          <div class="card-thumb" id="thumb-3">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+          </div>
+          <h3 class="card-title">Project Three</h3>
+          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <div class="card-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Systems</span>
+            <span class="tag">Linux</span>
+          </div>
+          <div class="card-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+        </div>
+
+      </div><!-- /.projects-grid -->
+    </section>
+
+    <footer>
+      <p>© 2025 Your Name</p>
+      <p>Built with intention.</p>
+    </footer>
+  </div><!-- /#page-home -->
+
+
+  <!-- ════════════════════════════════════════════
+       PROJECT 1 PAGE
+  ════════════════════════════════════════════ -->
+  <div id="page-project-1" class="page">
+
+    <div class="project-hero">
+      <button class="back-link" onclick="showPage('home')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Work
+      </button>
+      <p class="section-label">01</p>
+      <h1 class="project-hero-title">Project One</h1>
+      <p class="project-hero-subtitle">
+        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
+      </p>
+      <div class="project-meta">
+        <div class="meta-item">
+          <label>Year</label>
+          <span>2025</span>
+        </div>
+        <div class="meta-item">
+          <label>Role</label>
+          <span>Full-Stack Engineer</span>
+        </div>
+        <div class="meta-item">
+          <label>Stack</label>
+          <span>React · Node.js · PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-content">
+
+      <!-- Block 1: Overview -->
+      <div class="content-block">
+        <div class="image-slot">
+          <!--
+            TO ADD AN IMAGE:
+            1. Put your image file in projects/images/
+            2. Replace the div below with:
+               <img src="projects/images/p1-overview.jpg" alt="Project overview">
+          -->
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Overview</p>
+          <h2 class="content-title">What I built</h2>
+          <p class="content-body">
+            Describe the project in plain terms here. What is it? What does it do? Who is it for? Write naturally — imagine explaining it to someone smart but unfamiliar with the domain.
+          </p>
+          <p class="content-body">
+            Add a second paragraph here with more detail if needed — architecture decisions, key features, or interesting design choices.
+          </p>
+        </div>
+      </div>
+
+      <!-- Block 2: The Problem -->
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">The Challenge</p>
+          <h2 class="content-title">Problems I solved</h2>
+          <div class="problem-callout">
+            <p>"Describe the core technical or design challenge in one sentence — this is your hook."</p>
+          </div>
+          <p class="content-body">
+            Explain the problem in detail here. What made it hard? What constraints were you working within? Be specific — technical depth is what separates a portfolio from a resume.
+          </p>
+          <p class="content-body">
+            Then explain how you solved it. Walk through your reasoning, tradeoffs you made, and why your approach was the right one.
+          </p>
+        </div>
+      </div>
+
+      <!-- Block 3: Outcome -->
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Outcome</p>
+          <h2 class="content-title">Results & learnings</h2>
+          <p class="content-body">
+            What did you ship? What were the measurable outcomes — users, performance improvements, time saved? Be concrete where possible.
+          </p>
+          <p class="content-body">
+            What would you do differently? What did this project teach you? Showing self-awareness is just as impressive as showing skill.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.project-content -->
+
+    <footer>
+      <p>© 2025 Your Name</p>
+      <p>Built with intention.</p>
+    </footer>
+  </div><!-- /#page-project-1 -->
+
+
+  <!-- ════════════════════════════════════════════
+       PROJECT 2 PAGE
+  ════════════════════════════════════════════ -->
+  <div id="page-project-2" class="page">
+
+    <div class="project-hero">
+      <button class="back-link" onclick="showPage('home')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Work
+      </button>
+      <p class="section-label">02</p>
+      <h1 class="project-hero-title">Project Two</h1>
+      <p class="project-hero-subtitle">
+        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
+      </p>
+      <div class="project-meta">
+        <div class="meta-item">
+          <label>Year</label>
+          <span>2025</span>
+        </div>
+        <div class="meta-item">
+          <label>Role</label>
+          <span>ML Engineer</span>
+        </div>
+        <div class="meta-item">
+          <label>Stack</label>
+          <span>Python · PyTorch · AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-content">
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Overview</p>
+          <h2 class="content-title">What I built</h2>
+          <p class="content-body">Describe the project here. What is it? What does it do?</p>
+          <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
+        </div>
+      </div>
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">The Challenge</p>
+          <h2 class="content-title">Problems I solved</h2>
+          <div class="problem-callout">
+            <p>"Describe the core technical or design challenge in one sentence."</p>
+          </div>
+          <p class="content-body">Explain the problem in detail. What made it hard? What constraints existed?</p>
+          <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Outcome</p>
+          <h2 class="content-title">Results & learnings</h2>
+          <p class="content-body">What did you ship? What were the measurable outcomes?</p>
+          <p class="content-body">What would you do differently? What did this project teach you?</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>© 2025 Your Name</p>
+      <p>Built with intention.</p>
+    </footer>
+  </div><!-- /#page-project-2 -->
+
+
+  <!-- ════════════════════════════════════════════
+       PROJECT 3 PAGE
+  ════════════════════════════════════════════ -->
+  <div id="page-project-3" class="page">
+
+    <div class="project-hero">
+      <button class="back-link" onclick="showPage('home')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Work
+      </button>
+      <p class="section-label">03</p>
+      <h1 class="project-hero-title">Project Three</h1>
+      <p class="project-hero-subtitle">
+        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
+      </p>
+      <div class="project-meta">
+        <div class="meta-item">
+          <label>Year</label>
+          <span>2025</span>
+        </div>
+        <div class="meta-item">
+          <label>Role</label>
+          <span>Systems Engineer</span>
+        </div>
+        <div class="meta-item">
+          <label>Stack</label>
+          <span>C++ · Linux · CMake</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-content">
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Overview</p>
+          <h2 class="content-title">What I built</h2>
+          <p class="content-body">Describe the project here. What is it? What does it do?</p>
+          <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
+        </div>
+      </div>
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">The Challenge</p>
+          <h2 class="content-title">Problems I solved</h2>
+          <div class="problem-callout">
+            <p>"Describe the core technical or design challenge in one sentence."</p>
+          </div>
+          <p class="content-body">Explain the problem in detail. What made it hard? What constraints existed?</p>
+          <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="image-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Add image here</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p class="section-label">Outcome</p>
+          <h2 class="content-title">Results & learnings</h2>
+          <p class="content-body">What did you ship? What were the measurable outcomes?</p>
+          <p class="content-body">What would you do differently? What did this project teach you?</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>© 2025 Your Name</p>
+      <p>Built with intention.</p>
+    </footer>
+  </div><!-- /#page-project-3 -->
+
+
+  <!-- ════════════════════════════════════════════
+       CONTACT PAGE
+  ════════════════════════════════════════════ -->
+  <div id="page-contact" class="page">
+    <div class="contact-wrap">
+
+      <div class="contact-left">
+        <p class="section-label">Let's Talk</p>
+        <h2 class="contact-heading">Get in touch.</h2>
+        <p class="contact-sub">
+          Whether it's a project opportunity, collaboration, or just a question — I'm happy to hear from you. I'll respond within a few days.
+        </p>
+      </div>
+
+      <div class="contact-right">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send Message
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/>
+            </svg>
+          </button>
+          <p class="form-success" id="form-success">
+            ✓ &nbsp; Message sent — I'll be in touch soon.
+          </p>
+        </form>
+        <!--
+          TO MAKE THE FORM ACTUALLY SEND EMAILS:
+          Replace this form with a Formspree endpoint:
+          1. Go to formspree.io and create a free account
+          2. Create a form and get your endpoint URL
+          3. Change <form ... onsubmit="handleSubmit(event)">
+             to: <form action="https://formspree.io/f/YOUR_ID" method="POST">
+          4. Remove the handleSubmit function from the JS
+        -->
+      </div>
+
+    </div>
+
+    <footer style="background: var(--cream);">
+      <p>© 2025 Your Name</p>
+      <p>Built with intention.</p>
+    </footer>
+  </div><!-- /#page-contact -->
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
