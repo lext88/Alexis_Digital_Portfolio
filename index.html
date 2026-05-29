@@ -10,7 +10,7 @@
  
   <!-- ─── NAV ─────────────────────────────────── -->
   <nav>
-    <a class="nav-brand" href="#" onclick="showPage('home')">Your Name</a>
+    <a class="nav-brand" href="#" onclick="showPage('home')">Alexis Tao</a>
     <ul class="nav-links">
       <li><a href="#" onclick="showPage('home')" class="active" data-page="home">Work</a></li>
       <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
@@ -26,10 +26,11 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-bg-mark"></div>
-      <p class="hero-eyebrow">Software Engineer</p>
-      <h1 class="hero-name">Your Name<em>.</em></h1>
+      <p class="hero-eyebrow">Electrical and Computer Engineering</p>
+      <h1 class="hero-name">Alexis Tao<em>.</em></h1>
       <p class="hero-tagline">
-        I build thoughtful software — from systems architecture to seamless user experiences.
+        Hi! I'm Alexis Tao, an Electrical and Computer Engineering student at Rice University. In my attempt to explore this field, 
+        I've worked with pneumatic control, machine learning, sensor integration and efficient robtic communication systems.
       </p>
       <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
         View Projects
@@ -42,8 +43,7 @@
     <!-- Projects -->
     <section class="projects-section">
       <div class="projects-header">
-        <p class="section-label">Selected Work</p>
-        <h2 class="section-heading">Three projects.</h2>
+        <h2 class="section-heading">Portfolio</h2>
       </div>
  
       <div class="projects-grid">
@@ -55,12 +55,13 @@
             <!-- Replace the line below with: <img src="projects/images/project1-thumb.jpg" alt="Project 1"> -->
             <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
           </div>
-          <h3 class="card-title">Project One</h3>
-          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <h3 class="card-title">Soft Robotics for an Adaptive Space Exercise Harnessing System</h3>
+          <p class="card-desc">Undergraduate Researcher at texlat at Rice (Feb-May 2026) - Developing a dynamically adjustable harness
+          using pneumatic artificial muslces and an integrated sensing suite to inform a precise control model.</p>
           <div class="card-tags">
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">API</span>
+            <span class="tag">ML</span>
+            <span class="tag">MATLAB/SIMULINK</span>
+            <span class="tag">C++</span>
           </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -75,12 +76,11 @@
           <div class="card-thumb" id="thumb-2">
             <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
           </div>
-          <h3 class="card-title">Project Two</h3>
-          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <h3 class="card-title">ROS2 Project</h3>
+          <p class="card-desc">Final Capstone Project part of the Construct ROS2 basics in C++ Certification</p>
           <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">ML</span>
-            <span class="tag">Data</span>
+            <span class="tag">C++</span>
+            <span class="tag">ROS2</span>
           </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -95,7 +95,7 @@
           <div class="card-thumb" id="thumb-3">
             <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
           </div>
-          <h3 class="card-title">Project Three</h3>
+          <h3 class="card-title">Few Shot Learning Model for Image Identification</h3>
           <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
           <div class="card-tags">
             <span class="tag">C++</span>
@@ -129,12 +129,15 @@
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
-        Back to Work
+        Home
       </button>
       <p class="section-label">01</p>
       <h1 class="project-hero-title">Project One</h1>
       <p class="project-hero-subtitle">
-        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
+        Redesigned astronaut harness systems using sensor-driven, wireless feedback for pneumatic control.
+        As the only electrical team member, I integrated and callibrated fsr and loadcell sensors, designed a 
+        digital pneumatic system and force control model. Within 3 months, I delivered a trained machine learning
+        model.
       </p>
       <div class="project-meta">
         <div class="meta-item">
@@ -143,12 +146,9 @@
         </div>
         <div class="meta-item">
           <label>Role</label>
-          <span>Full-Stack Engineer</span>
+          <span>Undergraduate Researcher</span>
         </div>
-        <div class="meta-item">
-          <label>Stack</label>
-          <span>React · Node.js · PostgreSQL</span>
-        </div>
+        
       </div>
     </div>
  
@@ -201,7 +201,8 @@
             <p>"Describe the core technical or design challenge in one sentence — this is your hook."</p>
           </div>
           <p class="content-body">
-            Explain the problem in detail here. What made it hard? What constraints were you working within? Be specific — technical depth is what separates a portfolio from a resume.
+            My goal was to consider different sensing tools and systems to precisely control the harness loading.
+            
           </p>
           <p class="content-body">
             Then explain how you solved it. Walk through your reasoning, tradeoffs you made, and why your approach was the right one.
@@ -266,10 +267,6 @@
         <div class="meta-item">
           <label>Role</label>
           <span>ML Engineer</span>
-        </div>
-        <div class="meta-item">
-          <label>Stack</label>
-          <span>Python · PyTorch · AWS</span>
         </div>
       </div>
     </div>
@@ -368,10 +365,7 @@
           <label>Role</label>
           <span>Systems Engineer</span>
         </div>
-        <div class="meta-item">
-          <label>Stack</label>
-          <span>C++ · Linux · CMake</span>
-        </div>
+
       </div>
     </div>
  
