@@ -3,41 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Alexis Tao — Portfolio</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
  
-  <!-- ─── NAV ─────────────────────────────────── -->
+  <!-- NAV-->
   <nav>
-    <a class="nav-brand" href="#" onclick="showPage('home')">Alexis Tao</a>
+    <a class="nav-brand" href="#" onclick="showPage('home')">Alexis Tao Portfolio</a>
     <ul class="nav-links">
-      <li><a href="#" onclick="showPage('home')" class="active" data-page="home">Work</a></li>
+      <li><a href="#" onclick="showPage('home')" class="active" data-page="home">Home</a></li>
       <li><a href="#" onclick="showPage('contact')" data-page="contact">Contact</a></li>
     </ul>
   </nav>
  
  
-  <!-- ════════════════════════════════════════════
-       HOME PAGE
-  ════════════════════════════════════════════ -->
+  <!-- HOME PAGE-->
   <div id="page-home" class="page active">
  
     <!-- Hero -->
     <section class="hero">
       <div class="hero-bg-mark"></div>
-      <p class="hero-eyebrow">Electrical and Computer Engineering</p>
-      <h1 class="hero-name">Alexis Tao<em>.</em></h1>
-      <p class="hero-tagline">
-        Hi! I'm Alexis Tao, an Electrical and Computer Engineering student at Rice University. In my attempt to explore this field, 
-        I've worked with pneumatic control, machine learning, sensor integration and efficient robtic communication systems.
-      </p>
-      <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
-        View Projects
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
+ 
+      <!-- Two-column hero layout -->
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Electrical and Computer Engineering</p>
+          <h1 class="hero-name">Alexis Tao<em>.</em></h1>
+          <p class="hero-tagline">
+            Hi! I'm Alexis Tao, an Electrical and Computer Engineering student at Rice University. In my attempt to explore this field,
+            I've worked with pneumatic control, machine learning, sensor integration and efficient robotic communication systems. 
+            I look forward to sharing some of my projects and experiences with you!
+          </p>
+          <button class="hero-cta" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">
+            View Projects
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+ 
+        <!-- Profile photo slot -->
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+              <img src="projects/images/profile1.JPG" alt="Alexis Tao">
+            
+          </div>
+          <div class="hero-photo-ring"></div>
+        </div>
+      </div>
     </section>
  
     <!-- Projects -->
@@ -52,12 +66,11 @@
         <div class="project-card" onclick="showProject(1)">
           <p class="card-number">01 ─────</p>
           <div class="card-thumb" id="thumb-1">
-            <!-- Replace the line below with: <img src="projects/images/project1-thumb.jpg" alt="Project 1"> -->
-            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+            <img src="projects/images/untitled design.png" alt="Description">
+            
           </div>
           <h3 class="card-title">Soft Robotics for an Adaptive Space Exercise Harnessing System</h3>
-          <p class="card-desc">Undergraduate Researcher at texlat at Rice (Feb-May 2026) - Developing a dynamically adjustable harness
-          using pneumatic artificial muslces and an integrated sensing suite to inform a precise control model.</p>
+          <p class="card-desc">Undergraduate Researcher at texlab at Rice (Feb–May 2026)</p>
           <div class="card-tags">
             <span class="tag">ML</span>
             <span class="tag">MATLAB/SIMULINK</span>
@@ -74,10 +87,10 @@
         <div class="project-card" onclick="showProject(2)">
           <p class="card-number">02 ─────</p>
           <div class="card-thumb" id="thumb-2">
-            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+            <img src="projects/images/cover_page_rosject.png" alt="Description">
           </div>
-          <h3 class="card-title">ROS2 Project</h3>
-          <p class="card-desc">Final Capstone Project part of the Construct ROS2 basics in C++ Certification</p>
+          <h3 class="card-title">Multithreaded ROS2 Navigation Architecture for Autonomous Vehicle in C++</h3>
+          <p class="card-desc">Final Capstone Project part of the Construct ROS2 basics in C++ Certification (May-Aug 2026)</p>
           <div class="card-tags">
             <span class="tag">C++</span>
             <span class="tag">ROS2</span>
@@ -90,280 +103,608 @@
         </div>
  
         <!-- Card 3 -->
-        <div class="project-card" onclick="showProject(3)">
+        <!-- <div class="project-card" onclick="showProject(3)">
           <p class="card-number">03 ─────</p>
           <div class="card-thumb" id="thumb-3">
             <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
           </div>
           <h3 class="card-title">Few Shot Learning Model for Image Identification</h3>
-          <p class="card-desc">A short description of what this project does and the core problem it solves. Keep it to two or three sentences.</p>
+          <p class="card-desc">A machine learning model trained to identify and classify images from very limited labeled examples using few-shot learning techniques.</p>
           <div class="card-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Systems</span>
-            <span class="tag">Linux</span>
+            <span class="tag">Python</span>
+            <span class="tag">ML</span>
+            <span class="tag">PyTorch</span>
           </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M7 17L17 7M17 7H7M17 7v10"/>
             </svg>
           </div>
-        </div>
+        </div> -->
  
-      </div><!-- /.projects-grid -->
+      </div>
     </section>
  
-    <footer>
-      <p>© 2025 Your Name</p>
-      <p>Built with intention.</p>
-    </footer>
-  </div><!-- /#page-home -->
+  </div>
  
  
-  <!-- ════════════════════════════════════════════
-       PROJECT 1 PAGE
-  ════════════════════════════════════════════ -->
+  <!-- PROJECT 1 PAGE-->
   <div id="page-project-1" class="page">
- 
+
     <div class="project-hero">
-      <button class="back-link" onclick="showPage('home')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Home
-      </button>
-      <p class="section-label">01</p>
-      <h1 class="project-hero-title">Project One</h1>
-      <p class="project-hero-subtitle">
-        Redesigned astronaut harness systems using sensor-driven, wireless feedback for pneumatic control.
-        As the only electrical team member, I integrated and callibrated fsr and loadcell sensors, designed a 
-        digital pneumatic system and force control model. Within 3 months, I delivered a trained machine learning
-        model.
-      </p>
-      <div class="project-meta">
-        <div class="meta-item">
-          <label>Year</label>
-          <span>2025</span>
-        </div>
-        <div class="meta-item">
-          <label>Role</label>
-          <span>Undergraduate Researcher</span>
-        </div>
+      <div class="project-hero-inner">
         
+        <div class="project-hero-text">
+          <button class="back-link" onclick="showPage('home')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Home
+          </button>
+          <h1 class="project-hero-title">Soft Robotics for an Adaptive Space Exercise Harnessing System</h1>
+          <p class="project-hero-subtitle">
+            Astronauts spend upwards of 10 hours exercising each week and still experience significant muscle atrophy and bone density loss. 
+            This project focused on developing a soft robotic harness system that can adaptively control loading using sensor feedback and machine learning, 
+            with the goal of improving exercise effectiveness in microgravity.
+            As the only electrical team member, I designed and integrated a
+            highspeed, portable pneumatic system and developed a machine learning model to control harness loading in real time.
+
+          </p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <label>Year</label>
+              <span>2026</span>
+            </div>
+            <div class="meta-item">
+              <label>Role</label>
+              <span>Undergraduate Researcher</span>
+            </div>
+            <div class="meta-item">
+              <label>Lab</label>
+              <span>texlab @ Rice University</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-hero-image-wrap">
+          <div class="project-hero-photo">
+            <img src="projects/images/IMG_1933.jpg" alt="NEX4Ex Harness System Render">
+          </div>
+        </div>
+
       </div>
     </div>
- 
+
     <div class="project-content">
- 
-      <!-- Block 1: Overview -->
+
       <div class="content-block">
         <div class="image-slot">
-          <!--
-            TO ADD AN IMAGE:
-            1. Put your image file in projects/images/
-            2. Replace the div below with:
-               <img src="projects/images/p1-overview.jpg" alt="Project overview">
-          -->
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_brainstom_sketch1.png" alt="Harness Design Sketch">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_brainstom_sketch2.png" alt="Harness Design Sketch">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_brainstom_sketch3.png" alt="Harness Sensor Integration">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Overview</p>
-          <h2 class="content-title">What I built</h2>
-          <p class="content-body">
-            Describe the project in plain terms here. What is it? What does it do? Who is it for? Write naturally — imagine explaining it to someone smart but unfamiliar with the domain.
+          <h2 class="content-title">Brainstorming</h2>
+          <p class="content-body">Current exercise harnesses and astronaut exosuits lack the adaptability needed for effective muscle and bone health maintenance in microgravity environments. 
+             To address this, our team proposed a novel soft robotic harness system that integrates pneumatic artificial muscles (PAMs) with real-time sensor feedback. 
+             The PAMs provide lightweight, natural compliance, and the embedded sensors monitor loading. 
+             
+          </p>
+          <p class="content-body">I took the lead on the electrical side of the project, focusing on data collection, a pneumatic regulation system, and adaptive control to accomodate
+            user variation and actuator hysteresis. I also collaborated closely with the mechanical team to ensure seamless integration of sensors and actuators.
           </p>
           <p class="content-body">
-            Add a second paragraph here with more detail if needed — architecture decisions, key features, or interesting design choices.
+            Interestingly, I joined the Space Wearables team at texlab mid-semeter, when most of the lit review and technical workshops had been completed. 
+            This meant learning to build the knit pneumatic actuators and catch up on reading in a fraction of the time while simultaneously managing the hardware and software integration. 
           </p>
         </div>
       </div>
- 
-      <!-- Block 2: The Problem -->
+
       <div class="content-block reverse">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_calib.jpg" alt="Pressure Sensor Calibration">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_loadcell.png" alt="Load Cell">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_sensors.png" alt="FSR Testing">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_schematic.png" alt="Pneumatic System Schematic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_pyscript.png" alt="Hardware Communication Python Script">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_pyscript2.png" alt="Hardware Communication Python Script">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">The Challenge</p>
-          <h2 class="content-title">Problems I solved</h2>
-          <div class="problem-callout">
-            <p>"Describe the core technical or design challenge in one sentence — this is your hook."</p>
-          </div>
+          <h2 class="content-title">Sensor Selection and Calibration</h2>
+          <p class="content-body">When considering our sensing suite, we knew that loading would vary across the harness, 
+            so I proposed a multi-sensor approach that integrated force sensitive resistors (FSRs) with s-type strain-gauge load cells.
+            The FSRs would be embedded in the shoulder straps to capture localized pressure distribution, 
+            while the load cells would be mounted inline with the pneumatic actuators to measure the overall tension.
+          </p>
           <p class="content-body">
-            My goal was to consider different sensing tools and systems to precisely control the harness loading.
+            To verify that this approach could reliably judge harness loading, I calibrated the sensors and simulated strap forces to observe potential drift and non-linearity.
+            The calibration process revealed that the load cells provided stable, linear readings, but the FSRs exhibited significant drift.
+
+          </p>
+          <p class="content-body">
+            Additionally, our load cell amplifier is designed to be a USB Native Peripheral Device, which I soon realized would be a bottleneck for our real-time control loop.
+            Because MATLAB operates on a single-thread by default, polling the load cell over the USB bus disrupts the timing of the Arduino's serial communication. 
+            So rather than attempting to handle multiple asynchronous hardware protocols, I developed a python script to facilitate hardware communication between MATLAB and the Arduino serial port while using the 
+            Phidget22 library to read the load cell voltages.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/pressure sensor.gif" alt="Off Rig Prototype of Pneumatic System">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Pneumatic System</h2>
+          <p class="content-body">
+            Before I joined the team, previous iterations of the harness focused primarily 
+            on sensing and comfort, relying on a wall air compressor for inflation. My role was to transition the 
+            project toward "dynamic adjustability" by developing a lightweight and portable air control system.
+            To achieve this, I designed a digital system powered by an Arduino Uno microcontroller. The architecture 
+            regulates a micro-vacuum pump and 4/2 solenoid valve using logic-level 
+            MOSFET switching circuits. By adjusting the pump's duty cycle and toggling the valve state to switch 
+            the actuator port connections, the system achieves precise inflation and active deflation.
+          </p>
+          <p class ="content-body">
+            During testing, I found that decreasing the sampling interval caused the pump to experience sudden, 
+            aggressive jolts. I deduced that rapid pump switching was causing magnetic pushback, which interferred with the pressure sensor 
+            power and caused the control loops to overreact. To safely gather training data,
+            I established a baseline sampling rate of 0.2 Hz during initial testing. 
+          </p>
+          
+        </div>
+      </div>
+      
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_mat.png" alt="PID Controller MATLAB Workflow">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_results (2).png" alt="ANFIS Model Architecture">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_hysteresis.png" alt="Pneumatic Actuator Hysteresis">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Pneumatic Control and ML Model</h2>
+          <p class="content-body">
+            Standard linear control models like PID fail when managing pneumatic artificial muscles. Because PAMs are constructed from knit sleeves, 
+            they exhibit hysteresis: the pressure required to contract the muscle during inflation is completely different from 
+            the pressure measured at that exact same length during deflation. If you push the PID gains high enough to overcome this internal friction, the system immediately overshoots and 
+            oscillates.
+          </p>
+          <p class="content-body">
+            To solve this, I designed an Adaptive Neuro-Fuzzy Inference System (ANFIS) to act as a feedforward component in the control loop.  
+            I selected 4 specific inputs for the model to map the system's states:
+          </p>
+            <ul style="margin-bottom: 1.25rem;">
+              <li>Current Pressure: Tracks our position on the loading/unloading cycle.  </li>
+              <li>External Load: Accounts for user compliance and variable body shapes.  </li>
+              <li>Force Error: Acts as our primary input signal (Setpoint - Sensor Reading).  </li>
+              <li>Change in Force Error: Evaluates how fast we approach the target to prevent overshoot.   </li>
+            </ul>
+          <p class="content-body">
+            Crucially, the sign of this error tells the model which side of 
+            the hysteresis loop we are currently on to establish a clean one-to-one mapping for inverse modeling.
+            Put simply, the fuzzification layer utilizes Gaussian membership functions  
+            to calculate membership grades for each input, which are then multiplied in the product layer to determine their "firing strength". In the defuzzification stage, a Sugeno rule 
+            architecture outputs a weighted average. This output is our control signal, which is fed into the Arduino to drive the pump and valve. The sign will determine the solenoid state,
+            and the magnitude will determine the duty cycle of the pump PWM signal.
             
           </p>
-          <p class="content-body">
-            Then explain how you solved it. Walk through your reasoning, tradeoffs you made, and why your approach was the right one.
-          </p>
         </div>
       </div>
- 
-      <!-- Block 3: Outcome -->
-      <div class="content-block">
+
+      <div class="content-block reverse">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_pid (1).jpg" alt="PID Tuning">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_pid (2).jpg" alt="PID Tuning">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_mapping.png" alt="PID Controller Step Response">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Outcome</p>
-          <h2 class="content-title">Results & learnings</h2>
+          <h2 class="content-title">Data Collection</h2>
           <p class="content-body">
-            What did you ship? What were the measurable outcomes — users, performance improvements, time saved? Be concrete where possible.
+            Collecting the training data for our model meant implementing a simple PID controller to achieve certain target pressures.
+            The tunning process made it painfully obvious that standard PID control was unfit for our system. The Simulink
+            PID autotuner struggled to converge because of the actuator nonlinearity, so I manually tuned the parameters.
+            I started by increasing the proportional gain until the system could reach the target pressure with minimal overshoot. 
+            The integral gains were then slowly increased to achieve a faster response while 
+            maintaining accuracy. 
+
+            
           </p>
+
           <p class="content-body">
-            What would you do differently? What did this project teach you? Showing self-awareness is just as impressive as showing skill.
+            Once the actuator could reach the target pressure within an acceptable tolerance, I worked with the team to design a testing rig and subjected the actuators to a 0.05 Hz sinusoidal reference signal varying between 
+            3.447 kPa and 17.24 kPa (0.5 to 2.5 PSI) across three cycles. In each cycle, I applied variable external loads between 0.5 kg and 2 kg. 
+            The MATLAB Simulink ANFIS model utilizes a hybrid learning algorithm combining backpropagation gradient descent and least-squares estimation.  
+            A major theoretical hurdle was defining the "target force" during training data collection. 
+            I evaluated multiple strategies:  
+          </p>
+            <ul style="margin-bottom: 1.25rem;">
+              <li>Force-controlled PID: Allowing a step signal to drive the pump directly via force error. </li>
+              <li>FSR vs. Load Cell Comparison: Using pressure control but evaluating the delta between the FSR and the load cell.  </li>
+              <li>Stable Step Response Mapping: Waiting for the pressure to stabilize at various PSI steps and mapping the final achieved force.  </li>
+            </ul>
+          <p class="content-body">
+            Ultimately, I chose to use the FSR readings as the reference force. This meant that the model would be learning to predict the control signal based on the FSR readings rather than 
+            the actual load cell force. However, it was the only way to ensure that the training data was consistent enough for the model to learn effectively and capture the transient dynamics.
           </p>
         </div>
       </div>
- 
-    </div><!-- /.project-content -->
- 
-    <footer>
-      <p>© 2025 Your Name</p>
-      <p>Built with intention.</p>
-    </footer>
-  </div><!-- /#page-project-1 -->
- 
- 
-  <!-- ════════════════════════════════════════════
-       PROJECT 2 PAGE
-  ════════════════════════════════════════════ -->
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_solder.jpg" alt="Soldering Work">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_system.jpg" alt="Control Board Close up">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_results (1).png" alt="Model Performance">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project1_final.png" alt="Final Pneumatic Control Board">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Final Integration and Results</h2>
+          <p class="content-body">
+            Finally, I soldered the components together. This was exceptionally difficult, but the result was a compact pneumatic control board.  
+            Next, I extracted the optimized premise and consequent 
+            parameters from the trained model and converted them into fixed-point lookup matrices directly inside the Arduino firmware. 
+          </p>
+          <p class="content-body">
+            By pairing the ANFIS feedforward output with a conservative feedback loop, the system effectively mitigated the soft robotic hysteresis.
+             The hybrid control architecture minimized overshoot and successfully adapted the harness across different shoulder 
+             configurations.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project1_reflection.jpg" alt="Soldering Work">
+              </div>
+              
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Reflections</h2>
+          <p class="content-body">
+            In future iterations, I hope to migrate the ANFIS forward pass to an ESP32 to handle the
+            mathematical processing, and low-level sensor aggregation. 
+            My primary focus will also be implementing deadband testing to map the minimum voltage for pump movement, 
+            and resolving the pump jolts by isolating electromagnetic feedback and optimizing initial PID gains.
+
+          </p>
+          <p class="content-body">
+            This project put me in the unique position of being the only electrical engineer on a team of mechanical engineers.
+            Furthermore, joining mid semester meant overcoming a steep learning curve. It taught me how to quickly grasp and apply new technical skills.
+            Most importantly, I practiced communicating my ideas effectively to a team with a completely different background. 
+            I also learned how to navigate ambiguity and make informed decisions with incomplete information. 
+            The experience taught me lessons I’ll carry forward throughout my career. 
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PROJECT 2 PAGE -->
   <div id="page-project-2" class="page">
- 
+
     <div class="project-hero">
-      <button class="back-link" onclick="showPage('home')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Work
-      </button>
-      <p class="section-label">02</p>
-      <h1 class="project-hero-title">Project Two</h1>
-      <p class="project-hero-subtitle">
-        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
-      </p>
-      <div class="project-meta">
-        <div class="meta-item">
-          <label>Year</label>
-          <span>2025</span>
+      <div class="project-hero-inner">
+        
+        <div class="project-hero-text">
+          <button class="back-link" onclick="showPage('home')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Home
+          </button>
+          <h1 class="project-hero-title">Multithreaded ROS 2 Navigation Architecture for Autonomous Vehicles in C++</h1>
+          <p class="project-hero-subtitle">
+            The objective of this project was to design and deploy a modular, production-grade autonomous navigation 
+            software architecture for a TurtleBot3 mobile robot. Built entirely using Modern C++ (rclcpp) within the ROS 2 
+            (Robot Operating System) middleware layer, the system enables a differential-drive robot to autonomously localize, 
+            safely follow winding corridors, and dynamically log its path state machine. The overarching framework splits core 
+            functionality into reactive behavioral logic (Topics) , synchronous structural setup routines (Services) , and 
+            long-running asynchronous tracking tasks (Actions) , validating it first in a Gazebo physics simulation environment 
+            before deploying onto physical robotic hardware.
+          </p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <label>Year</label>
+              <span>2026</span>
+            </div>
+            <div class="meta-item">
+              <label>Role</label>
+              <span>Developer</span>
+            </div>
+            <div class="meta-item">
+              <label>Stack</label>
+              <span>C++ · ROS2</span>
+            </div>
+          </div>
         </div>
-        <div class="meta-item">
-          <label>Role</label>
-          <span>ML Engineer</span>
+
+        <div class="project-hero-image-wrap">
+          <div class="project-hero-photo">
+            <img src="projects/images/project2_rec.gif" alt="NEX4Ex Harness System Render">
+          </div>
         </div>
+
       </div>
     </div>
- 
+
     <div class="project-content">
  
       <div class="content-block">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_find_wall_node.png" alt="Initializing Velocity Publisher and Laser Subscriber">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_laserscan_callback.png" alt="Laser Scan Callback Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_nav_condition.png" alt="Navigation State Machine">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Overview</p>
-          <h2 class="content-title">What I built</h2>
-          <p class="content-body">Describe the project here. What is it? What does it do?</p>
-          <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
+          <h2 class="content-title">Reactive Wall-Following Behavior via Custom Topic Nodes</h2>
+          <p class="content-body">The Goal: Build a responsive node that subscribes to raw /scan data 
+            (LaserScan) and publishes steering geometry to /cmd_vel (Twist) to dynamically regulate the robot 
+            at a stable 30cm clearance from a right-hand wall.</p>
+          <p class="content-body">The Challenge & Structural Struggle: During the initial testing phases of this 
+            bang-bang controller, the robot exhibited severe edge cases. Setting the safety threshold for oncoming 
+            walls to 0.3 meters resulted in collisions, as processing latencies and the robot's physical inertia 
+            caused it to impact the wall before the angular turn could execute. Conversely, widening the safety gap to 
+            0.4 meters introduced an insidious bug: if the robot drifted or pitched slightly into the wall on a straightaway, 
+            the single-ray front laser would clip the side wall at an angle, misidentifying a normal corridor as an impending 
+            wall and triggering a corner-cut midway through a straight trajectory.The Architectural Fix: To resolve this, 
+            I transitioned from scanning a single, brittle 1D laser array index (msg->ranges[0]) to an adaptive forward-arc 
+            sampling window. This filter captured the true geometric minimum distance ahead, neutralizing 
+            false positives from minor body weaving. Additionally, I decoupled speed from the steering behavior; when the 
+            forward laser window drops below 0.5 meters, the linear tracking speed is drastically choked down from 0.15 m/s 
+            to a crawl of 0.03 m/s. This manipulation of linear kinetic momentum allowed the system's aggressive 0.35 rad/s 
+            angular turning velocity to cleanly rotate the chassis clear of corners without any threat of physical collisions. </p>
         </div>
       </div>
  
       <div class="content-block reverse">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_findwall_node.png" alt="Initialize Wall Finding Service Server">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_clientcall_responsehandle.png" alt="Service Client Call and Response Handler">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_findwall_states.png" alt="Service Server State Machine">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">The Challenge</p>
-          <h2 class="content-title">Problems I solved</h2>
-          <div class="problem-callout">
-            <p>"Describe the core technical or design challenge in one sentence."</p>
-          </div>
-          <p class="content-body">Explain the problem in detail. What made it hard? What constraints existed?</p>
-          <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
+          <h2 class="content-title">Synchronous Initialization via Custom Service Server</h2>
+          <p class="content-body">The Goal: Create a synchronous find_wall Service Server (FindWall.srv) that acts as a 
+            pre-flight initialization routine. When called, the robot must programmatically find the nearest obstruction, 
+            drive straight up to it, flush its alignment parallel to the surface, and return a clean execution state 
+            (wallfound = true) before releasing control back to the core tracking loop.</p>
+          <p class="content-body">The Challenge & Structural Struggle: Implementing a multi-phase linear and angular movement 
+            routine strictly inside a standard ROS 2 callback block completely froze the node's single-threaded executor stack. 
+            Because the service handler took several seconds to complete its spatial searches and wall alignments, it starved 
+            the incoming /scan subscriber thread of execution time. Without sensor updates flowing, the node could not read 
+            changing laser arrays, causing the robot to lock up or spin indefinitely.
+            The Architectural Fix: This problem required a deeper dive into the ROS 2 concurrency model. 
+            I refactored the underlying node to utilize a MultiThreadedExecutor and explicitly bound the service 
+            server callback to a isolated ReentrantCallbackGroup. This architecture separated the long-running service 
+            execution pipeline from the sensor ingestion pipeline. By allowing the executor to spawn concurrent worker 
+            threads, the service client could safely block and command velocities while the secondary callback thread 
+            continuously refreshed the internal variables with high-frequency LiDAR scans, creating an atomic, failsafe 
+            alignment sequence.</p>
         </div>
       </div>
  
       <div class="content-block">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Outcome</p>
-          <h2 class="content-title">Results & learnings</h2>
-          <p class="content-body">What did you ship? What were the measurable outcomes?</p>
-          <p class="content-body">What would you do differently? What did this project teach you?</p>
+          <h2 class="content-title">Asynchronous State Estimation via Custom Action Infrastructure</h2>
+          <p class="content-body">The Goal: Implement a long-running, non-blocking Action Server (OdomRecord.action) 
+            named record_odom. The action client must invoke this server to continuously track, compute, and buffer the 
+            robot's spatial odometry frames every second, outputting live mileage feedback and terminating 
+            with a definitive vector list of points upon completing a full navigation circuit.</p>
+          <p class="content-body">The Challenge & Structural Struggle: Managing the life cycle of an action client 
+            concurrently alongside an operational wall-following timer loop introduced complex thread-synchronization 
+            problems. The main challenge was maintaining a completely unblocked, highly deterministic 10Hz operational 
+            wall timer loop while simultaneously processing non-blocking asynchronous future objects (async_send_goal) 
+            returned from the action client initialization. If the action feedback callbacks or result states were handled 
+            on the wrong execution timeline, it created race conditions that caused sudden, erratic movements or prematurely 
+            issued stop commands (stop_msg) before the robot completed its lap.  The Architectural Fix: I addressed this by 
+            structuring a clean, event-driven state machine using std::bind to hook explicit, isolated callback routines for 
+            goal responses, live feedback loops, and final wrapped results. Operational wall-following code remains completely 
+            gated behind an atomic boolean flag (wall_follow_ready_), which is strictly flipped to true only when the service 
+            confirms alignment and the asynchronous action server safely returns a validated goal handle. When the action server 
+            finally reports a SUCCEEDED status code indicating circuit completion, the result thread cleanly intercepts 
+            execution, flips the operational flag to false, overrides the timer velocities, and publishes an explicit 
+            zero-velocity vector to gracefully park the platform. This highlights my ability to implement safe, decoupled, 
+            multi-threaded robotics software.</p>
+        </div>
+      </div>
+
+ 
+      <div class="content-block reverse">
+        
+        <div class="content-text">
+          <h2 class="content-title">Results & Learnings</h2>
+          <p class="content-body">The successful implementation of this navigation stack demonstrated the 
+            viability of using decentralized, asynchronous architectures for real-time edge computing on autonomous 
+            mobile robots. By debugging complex multithreading issues, dealing with physical inertia gaps in physics 
+            simulation, and mastering the ROS 2 computational graph, I advanced from writing standalone scripts to 
+            constructing coordinated, industrial-grade robot software frameworks.
+            Moving forward into my career, this project serves as foundational proof of my ability to 
+            build deterministic systems that successfully bridge the gap between high-level hardware-agnostic 
+            logic and real-world raw sensor inputs. The exact paradigms I mastered here—such as breaking away 
+            from blocking processes via ReentrantCallbackGroups, managing thread pools with explicit executors, 
+            and configuring asynchronous feedback states—are the core competencies required to scale enterprise-level 
+            autonomous mobile robots (AMRs), self-driving vehicles, and complex factory automation cells. 
+            This experience fundamentally elevates my engineering profile from a hobbyist to a production-capable 
+            robotics software developer.</p>
         </div>
       </div>
  
     </div>
  
-    <footer>
-      <p>© 2025 Your Name</p>
-      <p>Built with intention.</p>
-    </footer>
-  </div><!-- /#page-project-2 -->
+  </div>
  
  
-  <!-- ════════════════════════════════════════════
-       PROJECT 3 PAGE
-  ════════════════════════════════════════════ -->
+  <!-- PROJECT 3 PAGE -->
   <div id="page-project-3" class="page">
- 
+
     <div class="project-hero">
-      <button class="back-link" onclick="showPage('home')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Work
-      </button>
-      <p class="section-label">03</p>
-      <h1 class="project-hero-title">Project Three</h1>
-      <p class="project-hero-subtitle">
-        Edit this subtitle to briefly describe what the project is and its scope. One or two sentences.
-      </p>
-      <div class="project-meta">
-        <div class="meta-item">
-          <label>Year</label>
-          <span>2025</span>
+      <div class="project-hero-inner">
+        
+        <div class="project-hero-text">
+          <button class="back-link" onclick="showPage('home')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Home
+          </button>
+          <h1 class="project-hero-title">Few Shot Learning Model for Image Identification</h1>
+          <p class="project-hero-subtitle">
+            A machine learning model trained to accurately identify and classify images from very limited labeled examples, applying few-shot learning techniques to overcome data scarcity.
+          </p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <label>Year</label>
+              <span>2025</span>
+            </div>
+            <div class="meta-item">
+              <label>Role</label>
+              <span>ML Engineer</span>
+            </div>
+            <div class="meta-item">
+              <label>Stack</label>
+              <span>Python · PyTorch</span>
+            </div>
+          </div>
         </div>
-        <div class="meta-item">
-          <label>Role</label>
-          <span>Systems Engineer</span>
+
+        <div class="project-hero-image-wrap">
+          <div class="project-hero-photo">
+          </div>
         </div>
 
       </div>
@@ -373,84 +714,133 @@
  
       <div class="content-block">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Overview</p>
           <h2 class="content-title">What I built</h2>
-          <p class="content-body">Describe the project here. What is it? What does it do?</p>
-          <p class="content-body">Add more detail — architecture, key features, interesting design choices.</p>
+          <p class="content-body">Describe the project — what kind of images, what classification task, and why few-shot learning was the right approach.</p>
+          <p class="content-body">Add detail on the model architecture — backbone, embedding space, similarity metrics used.</p>
         </div>
       </div>
  
       <div class="content-block reverse">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">The Challenge</p>
           <h2 class="content-title">Problems I solved</h2>
-          <div class="problem-callout">
-            <p>"Describe the core technical or design challenge in one sentence."</p>
-          </div>
-          <p class="content-body">Explain the problem in detail. What made it hard? What constraints existed?</p>
-          <p class="content-body">Explain how you solved it. Walk through your reasoning and tradeoffs.</p>
+          <div class="problem-callout"><p>"Training a reliable classifier when labeled data is scarce requires the model to learn to generalize from very few examples."</p></div>
+          <p class="content-body">Explain the core challenge of few-shot learning — overfitting, class imbalance, embedding quality.</p>
+          <p class="content-body">Walk through your approach — Siamese networks, prototypical networks, or another paradigm — and why you chose it.</p>
         </div>
       </div>
  
       <div class="content-block">
         <div class="image-slot">
-          <div class="image-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <p>Add image here</p>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <p class="section-label">Outcome</p>
-          <h2 class="content-title">Results & learnings</h2>
-          <p class="content-body">What did you ship? What were the measurable outcomes?</p>
-          <p class="content-body">What would you do differently? What did this project teach you?</p>
+          <h2 class="content-title">Data Pipeline</h2>
+          <p class="content-body">Describe the dataset — source, size, class distribution, and how you split it for episodic training.</p>
+          <p class="content-body">Detail any augmentation strategies you used to artificially expand the limited training data.</p>
+        </div>
+      </div>
+ 
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Model Architecture & Training</h2>
+          <p class="content-body">Walk through the training loop — episodic training, support/query sets, and the loss function you used.</p>
+          <p class="content-body">Describe any hyperparameter tuning, learning rate schedules, or backbone choices (ResNet, ViT, etc.).</p>
+        </div>
+      </div>
+ 
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Benchmarks & Analysis</h2>
+          <p class="content-body">Present your results — accuracy, F1, confusion matrices, or qualitative examples of correct and incorrect predictions.</p>
+          <p class="content-body">Compare against a baseline — what does a naive classifier get vs. your few-shot model?</p>
+        </div>
+      </div>
+ 
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
+              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Results & Learnings</h2>
+          <p class="content-body">What did you ship? What accuracy did the model achieve on unseen classes with limited examples?</p>
+          <p class="content-body">What would you explore next — meta-learning, larger backbones, or cross-domain transfer?</p>
         </div>
       </div>
  
     </div>
  
-    <footer>
-      <p>© 2025 Your Name</p>
-      <p>Built with intention.</p>
-    </footer>
-  </div><!-- /#page-project-3 -->
+  </div>
  
  
-  <!-- ════════════════════════════════════════════
-       CONTACT PAGE
-  ════════════════════════════════════════════ -->
+  <!-- CONTACT PAGE-->
   <div id="page-contact" class="page">
     <div class="contact-wrap">
- 
       <div class="contact-left">
-        <p class="section-label">Let's Talk</p>
-        <h2 class="contact-heading">Get in touch.</h2>
+        <h2 class="contact-heading">Contact me!</h2>
         <p class="contact-sub">
           Whether it's a project opportunity, collaboration, or just a question — I'm happy to hear from you. I'll respond within a few days.
         </p>
       </div>
- 
       <div class="contact-right">
         <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-group">
@@ -475,29 +865,11 @@
               <path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/>
             </svg>
           </button>
-          <p class="form-success" id="form-success">
-            ✓ &nbsp; Message sent — I'll be in touch soon.
-          </p>
+          <p class="form-success" id="form-success">✓ &nbsp; Message sent — I'll be in touch soon.</p>
         </form>
-        <!--
-          TO MAKE THE FORM ACTUALLY SEND EMAILS:
-          Replace this form with a Formspree endpoint:
-          1. Go to formspree.io and create a free account
-          2. Create a form and get your endpoint URL
-          3. Change <form ... onsubmit="handleSubmit(event)">
-             to: <form action="https://formspree.io/f/YOUR_ID" method="POST">
-          4. Remove the handleSubmit function from the JS
-        -->
       </div>
- 
     </div>
- 
-    <footer>
-      <p>© 2025 Your Name</p>
-      <p>Built with intention.</p>
-    </footer>
-  </div><!-- /#page-contact -->
- 
+  </div>
  
   <script src="js/main.js"></script>
 </body>
