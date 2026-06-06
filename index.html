@@ -623,7 +623,7 @@
           <h2 class="content-title">Asynchronous State Estimation via Custom Action Infrastructure</h2>
           <p class="content-body">The Goal: Implement a long-running, non-blocking Action Server (OdomRecord.action) 
             named record_odom. The action client must invoke this server to continuously track, compute, and buffer the 
-            robot's spatial $(x, y, \theta)$ odometry frames every second, outputting live mileage feedback and terminating 
+            robot's spatial odometry frames every second, outputting live mileage feedback and terminating 
             with a definitive vector list of points upon completing a full navigation circuit.</p>
           <p class="content-body">The Challenge & Structural Struggle: Managing the life cycle of an action client 
             concurrently alongside an operational wall-following timer loop introduced complex thread-synchronization 
