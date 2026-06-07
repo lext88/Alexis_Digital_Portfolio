@@ -485,9 +485,9 @@
           </button>
           <h1 class="project-hero-title">Multithreaded ROS 2 Navigation Architecture for Autonomous Vehicles in C++</h1>
           <p class="project-hero-subtitle">
-            The objective of this project was to design and deploy a modular, production-grade autonomous navigation 
-            software architecture for a TurtleBot3 mobile robot. Built entirely using Modern C++ (rclcpp) within the ROS 2 
-            (Robot Operating System) middleware layer, the system enables a differential-drive robot to autonomously localize, 
+            The objective of this project was to design an autonomous navigation 
+            software architecture for a TurtleBot3 mobile robot. Built entirely using C++ within the ROS 2 
+            (Robot Operating System) middleware layer, the system enables a differential-drive robot to autonomously
             safely follow winding corridors, and dynamically log its path state machine. The overarching framework splits core 
             functionality into reactive behavioral logic (Topics) , synchronous structural setup routines (Services) , and 
             long-running asynchronous tracking tasks (Actions) , validating it first in a Gazebo physics simulation environment 
@@ -541,22 +541,21 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Reactive Wall-Following Behavior via Custom Topic Nodes</h2>
-          <p class="content-body">The Goal: Build a responsive node that subscribes to raw /scan data 
+          <p class="content-body">The Goal: Build a node that subscribes to raw /scan data 
             (LaserScan) and publishes steering geometry to /cmd_vel (Twist) to dynamically regulate the robot 
             at a stable 30cm clearance from a right-hand wall.</p>
-          <p class="content-body">The Challenge & Structural Struggle: During the initial testing phases of this 
-            bang-bang controller, the robot exhibited severe edge cases. Setting the safety threshold for oncoming 
+          <p class="content-body">During the initial testing phases of this 
+            controller, the robot exhibited severe edge cases. Setting the safety threshold for oncoming 
             walls to 0.3 meters resulted in collisions, as processing latencies and the robot's physical inertia 
-            caused it to impact the wall before the angular turn could execute. Conversely, widening the safety gap to 
-            0.4 meters introduced an insidious bug: if the robot drifted or pitched slightly into the wall on a straightaway, 
+            caused it to impact the wall before the angular turn could execute. On the other hand, widening the gap to 
+            0.4 meters introduced an unexpected bug. If the robot drifted or pitched slightly into the wall on a straightaway, 
             the single-ray front laser would clip the side wall at an angle, misidentifying a normal corridor as an impending 
-            wall and triggering a corner-cut midway through a straight trajectory.The Architectural Fix: To resolve this, 
-            I transitioned from scanning a single, brittle 1D laser array index (msg->ranges[0]) to an adaptive forward-arc 
-            sampling window. This filter captured the true geometric minimum distance ahead, neutralizing 
-            false positives from minor body weaving. Additionally, I decoupled speed from the steering behavior; when the 
+            wall and triggering a corner-cut midway through a straight trajectory. To resolve this, 
+            I transitioned from scanning a single, brittle 1D laser array index to an adaptive forward-arc 
+            sampling window. This filter captured the true geometric minimum distance ahead. Additionally, I decoupled speed from the steering behavior; when the 
             forward laser window drops below 0.5 meters, the linear tracking speed is drastically choked down from 0.15 m/s 
             to a crawl of 0.03 m/s. This manipulation of linear kinetic momentum allowed the system's aggressive 0.35 rad/s 
-            angular turning velocity to cleanly rotate the chassis clear of corners without any threat of physical collisions. </p>
+            angular turning velocity to cleanly rotate the chassis clear of corners without any collisions. </p>
         </div>
       </div>
  
@@ -581,22 +580,19 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Synchronous Initialization via Custom Service Server</h2>
-          <p class="content-body">The Goal: Create a synchronous find_wall Service Server (FindWall.srv) that acts as a 
-            pre-flight initialization routine. When called, the robot must programmatically find the nearest obstruction, 
+          <p class="content-body">The Goal: Create a synchronous find_wall Service Server that acts as a 
+            pre-flight initialization routine. When called, the robot must find the nearest obstruction, 
             drive straight up to it, flush its alignment parallel to the surface, and return a clean execution state 
             (wallfound = true) before releasing control back to the core tracking loop.</p>
-          <p class="content-body">The Challenge & Structural Struggle: Implementing a multi-phase linear and angular movement 
-            routine strictly inside a standard ROS 2 callback block completely froze the node's single-threaded executor stack. 
+          <p class="content-body"> Implementing a multi-phase linear and angular movement 
+            routine inside a standard ROS 2 callback block completely froze the node's single-threaded executor stack. 
             Because the service handler took several seconds to complete its spatial searches and wall alignments, it starved 
             the incoming /scan subscriber thread of execution time. Without sensor updates flowing, the node could not read 
-            changing laser arrays, causing the robot to lock up or spin indefinitely.
-            The Architectural Fix: This problem required a deeper dive into the ROS 2 concurrency model. 
-            I refactored the underlying node to utilize a MultiThreadedExecutor and explicitly bound the service 
-            server callback to a isolated ReentrantCallbackGroup. This architecture separated the long-running service 
-            execution pipeline from the sensor ingestion pipeline. By allowing the executor to spawn concurrent worker 
-            threads, the service client could safely block and command velocities while the secondary callback thread 
-            continuously refreshed the internal variables with high-frequency LiDAR scans, creating an atomic, failsafe 
-            alignment sequence.</p>
+            changing laser arrays, causing the robot to spin indefinitely.
+            I chose to utilize a MultiThreadedExecutor and explicitly bind the service 
+            server callback to an isolated ReentrantCallbackGroup. This architecture separated the long-running service 
+            execution pipeline from the sensor ingestion pipeline. The service client could safely block and command velocities while the secondary callback thread 
+            continuously refreshed the internal variables with high-frequency LiDAR scans.</p>
         </div>
       </div>
  
@@ -621,25 +617,19 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Asynchronous State Estimation via Custom Action Infrastructure</h2>
-          <p class="content-body">The Goal: Implement a long-running, non-blocking Action Server (OdomRecord.action) 
-            named record_odom. The action client must invoke this server to continuously track, compute, and buffer the 
+          <p class="content-body">The Goal: Implement a long-running Action Server. The action client must invoke this server to continuously track, compute, and buffer the 
             robot's spatial odometry frames every second, outputting live mileage feedback and terminating 
             with a definitive vector list of points upon completing a full navigation circuit.</p>
-          <p class="content-body">The Challenge & Structural Struggle: Managing the life cycle of an action client 
-            concurrently alongside an operational wall-following timer loop introduced complex thread-synchronization 
-            problems. The main challenge was maintaining a completely unblocked, highly deterministic 10Hz operational 
-            wall timer loop while simultaneously processing non-blocking asynchronous future objects (async_send_goal) 
+          <p class="content-body">The main challenge was maintaining a completely unblocked 10Hz operational 
+            wall timer loop while simultaneously processing non-blocking asynchronous future objects
             returned from the action client initialization. If the action feedback callbacks or result states were handled 
-            on the wrong execution timeline, it created race conditions that caused sudden, erratic movements or prematurely 
-            issued stop commands (stop_msg) before the robot completed its lap.  The Architectural Fix: I addressed this by 
-            structuring a clean, event-driven state machine using std::bind to hook explicit, isolated callback routines for 
-            goal responses, live feedback loops, and final wrapped results. Operational wall-following code remains completely 
-            gated behind an atomic boolean flag (wall_follow_ready_), which is strictly flipped to true only when the service 
-            confirms alignment and the asynchronous action server safely returns a validated goal handle. When the action server 
-            finally reports a SUCCEEDED status code indicating circuit completion, the result thread cleanly intercepts 
+            on the wrong execution timeline, it caused sudden movements or prematurely 
+            issued stop commands (stop_msg) before the robot completed its lap. I addressed this by 
+            structuring an event-driven state machine using std::bind to hook isolated callback routines for 
+            goal responses, live feedback loops, and final wrapped results. When the action server 
+            finally reports a SUCCEEDED status code indicating circuit completion, the result thread intercepts 
             execution, flips the operational flag to false, overrides the timer velocities, and publishes an explicit 
-            zero-velocity vector to gracefully park the platform. This highlights my ability to implement safe, decoupled, 
-            multi-threaded robotics software.</p>
+            zero-velocity vector. </p>
         </div>
       </div>
 
@@ -648,19 +638,11 @@
         
         <div class="content-text">
           <h2 class="content-title">Results & Learnings</h2>
-          <p class="content-body">The successful implementation of this navigation stack demonstrated the 
-            viability of using decentralized, asynchronous architectures for real-time edge computing on autonomous 
-            mobile robots. By debugging complex multithreading issues, dealing with physical inertia gaps in physics 
+          <p class="content-body">By debugging complex multithreading issues, dealing with physical inertia gaps in physics 
             simulation, and mastering the ROS 2 computational graph, I advanced from writing standalone scripts to 
-            constructing coordinated, industrial-grade robot software frameworks.
-            Moving forward into my career, this project serves as foundational proof of my ability to 
-            build deterministic systems that successfully bridge the gap between high-level hardware-agnostic 
-            logic and real-world raw sensor inputs. The exact paradigms I mastered here—such as breaking away 
-            from blocking processes via ReentrantCallbackGroups, managing thread pools with explicit executors, 
-            and configuring asynchronous feedback states—are the core competencies required to scale enterprise-level 
-            autonomous mobile robots (AMRs), self-driving vehicles, and complex factory automation cells. 
-            This experience fundamentally elevates my engineering profile from a hobbyist to a production-capable 
-            robotics software developer.</p>
+            constructing industrial-grade robot software frameworks.
+            The believe the skills I mastered here will serve me well in future work with 
+            autonomous mobile robots (AMRs), self-driving vehicles, and complex factory automation cells. </p>
         </div>
       </div>
  
