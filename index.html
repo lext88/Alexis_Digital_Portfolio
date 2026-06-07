@@ -487,11 +487,10 @@
           <p class="project-hero-subtitle">
             The objective of this project was to design an autonomous navigation 
             software architecture for a TurtleBot3 mobile robot. Built entirely using C++ within the ROS 2 
-            (Robot Operating System) middleware layer, the system enables a differential-drive robot to autonomously
+            (Robot Operating System) middleware layer, the system enables a robot to autonomously
             safely follow winding corridors, and dynamically log its path state machine. The overarching framework splits core 
             functionality into reactive behavioral logic (Topics) , synchronous structural setup routines (Services) , and 
-            long-running asynchronous tracking tasks (Actions) , validating it first in a Gazebo physics simulation environment 
-            before deploying onto physical robotic hardware.
+            long-running asynchronous tracking tasks (Actions).
           </p>
           <div class="project-meta">
             <div class="meta-item">
@@ -549,8 +548,8 @@
             walls to 0.3 meters resulted in collisions, as processing latencies and the robot's physical inertia 
             caused it to impact the wall before the angular turn could execute. On the other hand, widening the gap to 
             0.4 meters introduced an unexpected bug. If the robot drifted or pitched slightly into the wall on a straightaway, 
-            the single-ray front laser would clip the side wall at an angle, misidentifying a normal corridor as an impending 
-            wall and triggering a corner-cut midway through a straight trajectory. To resolve this, 
+            the single-ray front laser would clip the side wall at an angle, misidentifying a normal corridor as a new 
+            wall and triggering a corner-cut. To resolve this, 
             I transitioned from scanning a single, brittle 1D laser array index to an adaptive forward-arc 
             sampling window. This filter captured the true geometric minimum distance ahead. Additionally, I decoupled speed from the steering behavior; when the 
             forward laser window drops below 0.5 meters, the linear tracking speed is drastically choked down from 0.15 m/s 
@@ -589,9 +588,9 @@
             Because the service handler took several seconds to complete its spatial searches and wall alignments, it starved 
             the incoming /scan subscriber thread of execution time. Without sensor updates flowing, the node could not read 
             changing laser arrays, causing the robot to spin indefinitely.
-            I chose to utilize a MultiThreadedExecutor and explicitly bind the service 
+            I chose to utilize a MultiThreadedExecutor and bind the service 
             server callback to an isolated ReentrantCallbackGroup. This architecture separated the long-running service 
-            execution pipeline from the sensor ingestion pipeline. The service client could safely block and command velocities while the secondary callback thread 
+            execution pipeline from the sensor ingestion pipeline. The service client could block and command velocities while the secondary callback thread 
             continuously refreshed the internal variables with high-frequency LiDAR scans.</p>
         </div>
       </div>
@@ -620,15 +619,15 @@
           <p class="content-body">The Goal: Implement a long-running Action Server. The action client must invoke this server to continuously track, compute, and buffer the 
             robot's spatial odometry frames every second, outputting live mileage feedback and terminating 
             with a definitive vector list of points upon completing a full navigation circuit.</p>
-          <p class="content-body">The main challenge was maintaining a completely unblocked 10Hz operational 
-            wall timer loop while simultaneously processing non-blocking asynchronous future objects
+          <p class="content-body">The main challenge was maintaining a completely unblocked 10Hz
+            wall timer loop while processing non-blocking asynchronous future objects
             returned from the action client initialization. If the action feedback callbacks or result states were handled 
             on the wrong execution timeline, it caused sudden movements or prematurely 
             issued stop commands (stop_msg) before the robot completed its lap. I addressed this by 
             structuring an event-driven state machine using std::bind to hook isolated callback routines for 
             goal responses, live feedback loops, and final wrapped results. When the action server 
             finally reports a SUCCEEDED status code indicating circuit completion, the result thread intercepts 
-            execution, flips the operational flag to false, overrides the timer velocities, and publishes an explicit 
+            execution, flips the operational flag to false, overrides the timer velocities, and publishes a
             zero-velocity vector. </p>
         </div>
       </div>
