@@ -70,7 +70,7 @@
             
           </div>
           <h3 class="card-title">Soft Robotics for an Adaptive Space Exercise Harnessing System</h3>
-          <p class="card-desc">Undergraduate Researcher at texlab at Rice (Feb–May 2026)</p>
+          <p class="card-desc">(Feb–May 2026)</p>
           <div class="card-tags">
             <span class="tag">ML</span>
             <span class="tag">MATLAB/SIMULINK</span>
@@ -87,10 +87,10 @@
         <div class="project-card" onclick="showProject(2)">
           <p class="card-number">02 ─────</p>
           <div class="card-thumb" id="thumb-2">
-            <img src="projects/images/cover_page_rosject.png" alt="Description">
+            <img src="projects/images/cover_page_rosject.png" alt="Project 2 Cover">
           </div>
           <h3 class="card-title">Multithreaded ROS2 Navigation Architecture for Autonomous Vehicle in C++</h3>
-          <p class="card-desc">Final Capstone Project part of the Construct ROS2 basics in C++ Certification (May-Aug 2026)</p>
+          <p class="card-desc">(May-Aug 2026)</p>
           <div class="card-tags">
             <span class="tag">C++</span>
             <span class="tag">ROS2</span>
@@ -103,24 +103,24 @@
         </div>
  
         <!-- Card 3 -->
-        <!-- <div class="project-card" onclick="showProject(3)">
+        <div class="project-card" onclick="showProject(3)">
           <p class="card-number">03 ─────</p>
           <div class="card-thumb" id="thumb-3">
-            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--light-gray);letter-spacing:0.1em;">ADD IMAGE</span>
+            <img src="projects/images/proj3_cover.jpg" alt="Project 3 Cover">
           </div>
-          <h3 class="card-title">Few Shot Learning Model for Image Identification</h3>
-          <p class="card-desc">A machine learning model trained to identify and classify images from very limited labeled examples using few-shot learning techniques.</p>
+          <h3 class="card-title">Pipelined Fixed-Point FIR Filter with UVM Verification</h3>
+          <p class="card-desc">(Jun-Aug 2026)</p>
           <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">ML</span>
-            <span class="tag">PyTorch</span>
+            <span class="tag">Verilog</span>
+            <span class="tag">SystemVerilog</span>
+            <span class="tag">UVM</span>
           </div>
           <div class="card-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M7 17L17 7M17 7H7M17 7v10"/>
             </svg>
           </div>
-        </div> -->
+        </div>
  
       </div>
     </section>
@@ -510,7 +510,7 @@
 
         <div class="project-hero-image-wrap">
           <div class="project-hero-photo">
-            <img src="projects/images/project2_rec.gif" alt="NEX4Ex Harness System Render">
+            <img src="projects/images/project2_rec.gif" alt="Project 2 Demo">
           </div>
         </div>
 
@@ -540,11 +540,19 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Reactive Wall-Following Behavior via Custom Topic Nodes</h2>
+<<<<<<< HEAD
+          <p class="content-body">Build a responsive node that subscribes to raw /scan data 
+            (LaserScan) and publishes steering geometry to /cmd_vel (Twist) to dynamically regulate the robot 
+            at a stable 30cm clearance from a right-hand wall.</p>
+          <p class="content-body">During the initial testing phases of this 
+            bang-bang controller, the robot exhibited severe edge cases. Setting the safety threshold for oncoming 
+=======
           <p class="content-body">The Goal: Build a node that subscribes to raw /scan data 
             (LaserScan) and publishes steering geometry to /cmd_vel (Twist) to dynamically regulate the robot 
             at a stable 30cm clearance from a right-hand wall.</p>
           <p class="content-body">During the initial testing phases of this 
             controller, the robot exhibited severe edge cases. Setting the safety threshold for oncoming 
+>>>>>>> 396b2f01a853956816d5e904976321dbfa4dc0d4
             walls to 0.3 meters resulted in collisions, as processing latencies and the robot's physical inertia 
             caused it to impact the wall before the angular turn could execute. On the other hand, widening the gap to 
             0.4 meters introduced an unexpected bug. If the robot drifted or pitched slightly into the wall on a straightaway, 
@@ -579,12 +587,12 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Synchronous Initialization via Custom Service Server</h2>
-          <p class="content-body">The Goal: Create a synchronous find_wall Service Server that acts as a 
-            pre-flight initialization routine. When called, the robot must find the nearest obstruction, 
+          <p class="content-body">Create a synchronous find_wall Service Server (FindWall.srv) that acts as a 
+            pre-flight initialization routine. When called, the robot must programmatically find the nearest obstruction, 
             drive straight up to it, flush its alignment parallel to the surface, and return a clean execution state 
             (wallfound = true) before releasing control back to the core tracking loop.</p>
-          <p class="content-body"> Implementing a multi-phase linear and angular movement 
-            routine inside a standard ROS 2 callback block completely froze the node's single-threaded executor stack. 
+          <p class="content-body">Implementing a multi-phase linear and angular movement 
+            routine strictly inside a standard ROS 2 callback block completely froze the node's single-threaded executor stack. 
             Because the service handler took several seconds to complete its spatial searches and wall alignments, it starved 
             the incoming /scan subscriber thread of execution time. Without sensor updates flowing, the node could not read 
             changing laser arrays, causing the robot to spin indefinitely.
@@ -616,11 +624,14 @@
         </div>
         <div class="content-text">
           <h2 class="content-title">Asynchronous State Estimation via Custom Action Infrastructure</h2>
-          <p class="content-body">The Goal: Implement a long-running Action Server. The action client must invoke this server to continuously track, compute, and buffer the 
+          <p class="content-body">Implement a long-running, non-blocking Action Server (OdomRecord.action) 
+            named record_odom. The action client must invoke this server to continuously track, compute, and buffer the 
             robot's spatial odometry frames every second, outputting live mileage feedback and terminating 
             with a definitive vector list of points upon completing a full navigation circuit.</p>
-          <p class="content-body">The main challenge was maintaining a completely unblocked 10Hz
-            wall timer loop while processing non-blocking asynchronous future objects
+          <p class="content-body">Managing the life cycle of an action client 
+            concurrently alongside an operational wall-following timer loop introduced complex thread-synchronization 
+            problems. The main challenge was maintaining a completely unblocked, highly deterministic 10Hz operational 
+            wall timer loop while simultaneously processing non-blocking asynchronous future objects (async_send_goal) 
             returned from the action client initialization. If the action feedback callbacks or result states were handled 
             on the wrong execution timeline, it caused sudden movements or prematurely 
             issued stop commands (stop_msg) before the robot completed its lap. I addressed this by 
@@ -663,28 +674,30 @@
             </svg>
             Home
           </button>
-          <h1 class="project-hero-title">Few Shot Learning Model for Image Identification</h1>
+          <h1 class="project-hero-title">Pipelined Fixed-Point FIR<br>Filter with UVM Verification</h1>
           <p class="project-hero-subtitle">
-            A machine learning model trained to accurately identify and classify images from very limited labeled examples, applying few-shot learning techniques to overcome data scarcity.
+            My growing fascination with AI hardware led me to ask: what does that actually look like
+            at the register-transfer level? This project is my answer. I designed a two-stage pipelined MAC engine and FIR filter neuron
+            from scratch in SystemVerilog, deployed it on a Tang Nano 9K FPGA, and built a complete UVM verification environment
+            around it. This is the same methodology used at semiconductor companies like NVIDIA to tape out billion-transistor chips.
+            The final testbench achieved 419 scoreboard passes with zero mismatches and 100% functional coverage closure across
+            all coverpoints, with zero UVM errors or fatals.
           </p>
           <div class="project-meta">
             <div class="meta-item">
               <label>Year</label>
-              <span>2025</span>
+              <span>2026</span>
             </div>
             <div class="meta-item">
-              <label>Role</label>
-              <span>ML Engineer</span>
-            </div>
-            <div class="meta-item">
-              <label>Stack</label>
-              <span>Python · PyTorch</span>
+              <label>Tools</label>
+              <span>Verilog · SystemVerilog · UVM</span>
             </div>
           </div>
         </div>
 
         <div class="project-hero-image-wrap">
-          <div class="project-hero-photo">
+          <div style="width: 601px; height: 300px; overflow: hidden; position: relative; z-index: 1; background: var(--navy);">
+            <img src="projects/images/project3_vid.gif" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" alt="Project 3 Demo">
           </div>
         </div>
 
@@ -697,18 +710,76 @@
         <div class="image-slot">
           <div class="carousel" data-carousel>
             <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_backpressure_wave.png" alt="Action Client Response Handling">
+              </div>
+              
             </div>
             <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
             <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <h2 class="content-title">What I built</h2>
-          <p class="content-body">Describe the project — what kind of images, what classification task, and why few-shot learning was the right approach.</p>
-          <p class="content-body">Add detail on the model architecture — backbone, embedding space, similarity metrics used.</p>
+          <h2 class="content-title">RTL Design</h2>
+          <p class="content-body">
+            The design consists of three modules:
+          </p>
+            <ul style="margin-bottom: 1.25rem;">
+              <li>mac.v — A 2-stage pipelined Multiply-Accumulate unit. Stage 1 registers the product (Q8.8 format). Stage 2 accumulates truncated products and saturates to Q4.4. </li>
+              <li>neuron.sv — A 4-state FSM (IDLE → FETCH → COMPUTE → OUTPUT) that orchestrates the MAC unit, feeds it one (data, weight) pair per clock, and applies a ReLU activation on the result. </li>
+              <li>audio_filter_engine.sv — A stream-interface wrapper with a 3-state FSM (ENG_IDLE → ENG_COMPUTE → ENG_STALL) that implements a valid/ready handshake on both input and output ports, manages the x[n-1] delay line, and stalls the pipeline when the downstream consumer applies backpressure. </li>
+            </ul>
+          <p class="content-body">
+            <ul style="margin-bottom: 1.25rem;">
+              <li>Count 0: Present (data[0], weight[0]) → Stage 1 registers the product on the next clock.</li>
+              <li>Count 1: Stage 1 product enters Stage 2 accumulator. Present (data[1], weight[1]).</li>
+              <li>Count 2: Stage 1 product enters Stage 2. Present (data[2], weight[2] = bias).</li>
+              <li>Count 3: Bias product enters Stage 2. No new data presented.</li>
+              <li>Count 4: Bias product finishes accumulating. All three terms are now in wide_accum.</li>
+            </ul>
+          </p>
+          <p class="content-body">
+            The design is a 2-tap FIR filter operating on a signed 8-bit Q4.4 fixed-point stream — a stand-in for either an audio
+            signal or a low-resolution sensor feed. I chose fixed-point because floating point is expensive in area and timing
+            on real silicon, and reasoning carefully about a fixed binary point forces you to confront overflow and precision loss
+            directly instead of letting the format hide it from you. Floating-point arithmetic requires dedicated FPUs that consume
+            significant FPGA fabric and power. For a fixed filter with known weight ranges, Q4.4 fixed-point is sufficient:
+            4 integer bits and 4 fractional bits, packed into a signed 8-bit value. This gives a real-number range of
+            −8.0 to +7.9375 with a resolution of 0.0625. Every weight and sample in the system uses this format,
+            keeping all arithmetic in simple integer hardware.
+          </p>
+          <p class="content-body">
+            The core <code>mac</code> unit is two pipeline stages: a full 16-bit signed multiply register, followed by a 24-bit guard-bit
+            accumulator register. Because the multiplier and accumulator are separate pipeline stages, there's a real hazard to manage —
+            a sample fed into the MAC on cycle N doesn't land in the accumulator until cycle N+2. The <code>neuron</code> FSM that
+            sequences three MAC operations (two taps plus bias) has to explicitly wait for that two-stage latency to drain before it's
+            safe to sample the result — that's the purpose of the otherwise-odd-looking <code>count == 4</code> condition rather than
+            <code>count == 3</code>. Getting that wrong doesn't throw an error; it silently reads a partially-accumulated value, which is
+            the kind of bug that only shows up as a scoreboard mismatch three verification runs later.
+            The MAC unit (mac.v) implements the core computation across two pipeline stages.
+            Stage 1 registers the full 16-bit product of two Q4.4 inputs (8×8 = 16 bits, Q8.8 format).
+            Stage 2 sign-extends the truncated Q4.4 product into a 24-bit accumulator and adds it to the running sum.
+            The first critical bug I discovered and fixed was that the original 8-bit accumulator silently wrapped around on
+            overflow — a +127 result would reappear as −127. The fix was widening the accumulator to 24 bits, which
+            comfortably holds three Q4.4 products without any loss, then clamping to the signed 8-bit range
+            [−128, +127] combinationally at the output. This converts destructive wraparound into correct saturating arithmetic,
+            which is visible in the waveform: <em>wide_accum</em> climbs above 127 while <em>accum</em> stays pinned at +127.
+          </p>
+          <p class="content-body">
+            The subtler design decision was in the top-level <code>audio_filter_engine</code>: the neuron's <code>start</code> signal
+            fires using the <em>current</em> (not-yet-updated) sample registers, but because the neuron itself doesn't latch its inputs
+            until its own <code>STATE_FETCH</code> cycle — one cycle later — it ends up sampling the freshly-updated registers instead. It
+            looks like a bug on first read. It isn't. It's a one-cycle alignment trick that saves a pipeline stage, and it's exactly the
+            kind of thing I wanted my testbench to be rigorous enough to either validate or catch.
+          </p>
+          <p class="content-body">
+            Overflow protection came from two layers: saturating arithmetic clamps the accumulator to [-128, 127] before it ever leaves
+            the MAC, and a ReLU activation clips negative results to zero at the output. Both are standard in accelerator datapaths for
+            the same reason — silently wrapping around on overflow is far more dangerous than clipping, because a wrapped value looks
+            like valid data instead of an error.
+          </p>
+          
         </div>
       </div>
  
@@ -716,19 +787,23 @@
         <div class="image-slot">
           <div class="carousel" data-carousel>
             <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_pipeline_wave.png" alt="Action Client Response Handling">
+              </div>
+              
             </div>
             <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
             <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <h2 class="content-title">Problems I solved</h2>
-          <div class="problem-callout"><p>"Training a reliable classifier when labeled data is scarce requires the model to learn to generalize from very few examples."</p></div>
-          <p class="content-body">Explain the core challenge of few-shot learning — overfitting, class imbalance, embedding quality.</p>
-          <p class="content-body">Walk through your approach — Siamese networks, prototypical networks, or another paradigm — and why you chose it.</p>
+          <h2 class="content-title">Building a UART Reciever</h2>
+          <p class="content-body">To send inputs ($x_0, x_1$) from my PC to your Tang Nano 9K board over a USB cable, 
+            you need a UART Receiver. Onboard Crystal Clock ($f_{clk}$): 27 MHz (default on Tang Nano 9K pin 52).
+            Target Baud Rate: 115,200 baud.Clocks per Bit ($N$): $\frac{27,000,000}{115,200} \approx \mathbf{234 \text{ clock cycles per bit}}$.
+            I built a 8N1 (8 data bitd, no parity, 1 stop bit) UART reciever.
+          </p>
         </div>
       </div>
  
@@ -736,56 +811,316 @@
         <div class="image-slot">
           <div class="carousel" data-carousel>
             <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_pipeline_overview.png" alt="Action Client Response Handling">
+              </div>
+              
             </div>
             <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
             <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <h2 class="content-title">Data Pipeline</h2>
-          <p class="content-body">Describe the dataset — source, size, class distribution, and how you split it for episodic training.</p>
-          <p class="content-body">Detail any augmentation strategies you used to artificially expand the limited training data.</p>
+          <h2 class="content-title">UVM Testbench</h2>
+          <p class="content-body">
+            Rather than eyeballing waveforms, I built a full UVM environment: a randomized transaction class, a constrained-random
+            sequence layer, an active driver/monitor agent pair, an independent reference-model scoreboard, and a functional coverage
+            collector — all wired together through analysis ports rather than direct references, so each component stays decoupled and
+            reusable.
+          </p>
+          <p class="content-body">
+            The scoreboard reimplements the exact same fixed-point transfer function as the RTL — 
+            <code>y = ReLU(sat((24·x[n] − 16·x[n−1] + 256) &gt;&gt;&gt; 4))</code>
+             — independently in the testbench, then compares it sample-for-sample against what the monitor
+            observed on the DUT's output. The two independent implementations of the same math
+            have to agree under every stimulus pattern I could throw at them.
+          </p>
+          <p class="content-body">
+            For stimulus, I moved past pure randomization early. Standard constrained-random testing is good at finding unexpected
+            bugs, but it's bad at hitting known boundary conditions like max positive/negative saturation, exact
+            zero crossings, heavy backpressure. So I built a family of directed-but-randomized sequences: one purely random baseline
+            (250 samples), an impulse-response sequence to check settling behavior, dedicated saturation-boundary sequences that force
+            the exact extremes, and a heavy-backpressure sequence that stalls the consumer 70% of the time. A master sequence composes
+            all of them into one coherent regression.
+          </p>
         </div>
       </div>
- 
-      <div class="content-block reverse">
-        <div class="image-slot">
-          <div class="carousel" data-carousel>
-            <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
-            </div>
-            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
-            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
-          </div>
-        </div>
-        <div class="content-text">
-          <h2 class="content-title">Model Architecture & Training</h2>
-          <p class="content-body">Walk through the training loop — episodic training, support/query sets, and the loss function you used.</p>
-          <p class="content-body">Describe any hyperparameter tuning, learning rate schedules, or backbone choices (ResNet, ViT, etc.).</p>
-        </div>
-      </div>
+
  
       <div class="content-block">
         <div class="image-slot">
           <div class="carousel" data-carousel>
             <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_saturation_wave.png" alt="Action Client Response Handling">
+              </div>
+              
             </div>
             <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
             <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
-          <h2 class="content-title">Benchmarks & Analysis</h2>
-          <p class="content-body">Present your results — accuracy, F1, confusion matrices, or qualitative examples of correct and incorrect predictions.</p>
-          <p class="content-body">Compare against a baseline — what does a naive classifier get vs. your few-shot model?</p>
+          <h2 class="content-title">Coverage-Driven Closure: Finding the Gaps Numbers Don't Show You</h2>
+          <p class="content-body">
+            The most instructive part of this project was discovering that a passing testbench and a
+            complete testbench are two different things. Early on, my covergroup had bins for maximum-saturation test modes that
+            no sequence ever actually drove, meaning the coverage tool was permanently reporting a hole that no amount of extra
+            simulation time would ever close. The fix was to write a sequence that explicitly targets those
+            modes.
+          </p>
+          <p class="content-body">
+            The harder gap was in the input/output cross-coverage. Because the current-sample tap weight (24) dominates the
+            previous-sample weight (−16) in this filter, several (x[n], y[n]) combinations are mathematically impossible
+            regardless of what x[n−1] was — for example, a maximum-positive input can never produce a near-zero output, no matter how
+            negative the previous sample gets. I worked the transfer function backward to identify exactly which combinations were true
+            hardware constraints rather than test gaps, and marked those as illegal_bins instead of chasing an unreachable
+            100%. For the combinations that were reachable but only in a narrow input window, I solved the equation directly for
+            the exact x[n−1] needed to hit each one and drove those pairs deterministically — turning "hope random testing gets lucky"
+            into "guaranteed to hit every reachable case exactly once."
+          </p>
+          <p class="content-body">
+            I also treated reset as a first-class corner case rather than a one-time setup step. A background reset-injector component
+            fires resets mid-test at randomized intervals — including deliberate back-to-back resets with zero settle time — while the
+            monitor and scoreboard both subscribe to those reset events to resynchronize their own internal state. Without that
+            resynchronization, a reset genuinely would produce a false failure, because the reference model's history and the DUT's
+            history would fall out of sync the instant reset released.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Neuron FSM: Sequencing a 2-Stage Pipeline</h2>
+          <p class="content-body">
+            The neuron module (neuron.sv) sequences the MAC unit through a four-state FSM:
+            STATE_IDLE, STATE_FETCH, STATE_COMPUTE, and STATE_OUTPUT. The key design challenge was getting
+            the pipeline timing exactly right — a mistake I had to carefully work through.
+          </p>
+          <p class="content-body">
+            Because the MAC has two pipeline stages (multiply then accumulate), feeding a new input on cycle N means
+            the accumulated result isn't ready until cycle N+2. For three MAC operations (x[n]×W0, x[n-1]×W1, and the bias term),
+            the pipeline must be fed on cycles 0, 1, and 2, then held idle for two additional flush cycles so the last
+            bias product propagates fully through both stages. The FSM therefore waits until count == 4 before transitioning
+            to STATE_OUTPUT, giving the neuron a total latency of 7 clock cycles from input to result. This is clearly
+            visible in the waveform: <em>current_state</em> stays in STATE_COMPUTE (10) while <em>wide_accum</em>
+            increments through three intermediate values before <em>out_valid</em> rises and <em>out_data</em>
+            presents the final filtered sample.
+          </p>
+          <p class="content-body">
+            The ReLU activation is then applied purely combinationally: <code>assign out = mac_accum[7] ? 8'sd0 : mac_accum</code>.
+            Checking bit 7 (the sign bit) of the saturated output and clamping negative values to zero maps directly
+            to the hardware: no comparator, no subtractor — just a single conditional wire.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Stream Interface: Valid/Ready Handshake and Backpressure</h2>
+          <p class="content-body">
+            The audio_filter_engine module wraps the neuron in an AXI-stream-style valid/ready handshake,
+            making it composable with other streaming IP. The top-level engine FSM has three states:
+            ENG_IDLE (accepting new inputs), ENG_COMPUTE (running the neuron pipeline), and ENG_STALL
+            (holding the output if the downstream consumer isn't ready).
+          </p>
+          <p class="content-body">
+            The stall path was one of the more interesting design problems. When <em>neuron_ready</em> fires but
+            <em>out_ready</em> is low, the engine must freeze its output indefinitely — potentially for many cycles —
+            without corrupting the result or missing the next input. ENG_STALL holds <em>out_valid</em> high
+            and drives <em>out_data</em> from a registered <em>holding_out</em> register, blocking
+            <em>in_ready</em> until the downstream consumer acknowledges. The waveform shows this clearly:
+            <em>state</em> remains at ENG_STALL (2'b10) with <em>out_valid</em> held high while
+            <em>out_ready</em> is low, and <em>out_data</em> is frozen at 68 — exactly matching the holding register's value.
+          </p>
+          <p class="content-body">
+            The system_top module handles the UART interface: two consecutive bytes received from the host PC
+            are latched as x[n] and x[n-1], then a one-cycle start pulse fires the neuron. The result drives
+            the Tang Nano's six active-low LEDs, making the filter's output visible as a binary pattern
+            on real hardware without any additional display peripherals.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="content-block ">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Verification Challenges: Deadlocks, Reset, and Coverage Closure</h2>
+          <p class="content-body">
+            The most challenging bug in the entire project was a simulation deadlock that manifested as
+            a timeout with no error message. The driver was holding <em>out_ready</em> low (to test backpressure)
+            while simultaneously waiting for <em>in_ready</em> to go high. But <em>in_ready</em> can only
+            assert when the engine is in ENG_IDLE — and ENG_IDLE is only reachable from ENG_STALL when
+            <em>out_ready</em> is 1. Each side was waiting for the other in a classical deadlock.
+            The fix was splitting the driver into two phases: Phase 1 completes the input handshake with
+            <em>out_ready</em> held high (ensuring the engine can return to idle), then Phase 2 applies
+            a timed stall after the input has been accepted. This correctly exercises the ENG_STALL path
+            without ever creating a circular wait.
+          </p>
+          <p class="content-body">
+            Mid-test reset injection was another non-trivial challenge. When reset fires during a computation,
+            the neuron pipeline is wiped, but the testbench's monitor had already enqueued that sample
+            in its input FIFO expecting an output that would never arrive. The fix was a dedicated
+            <em>watch_reset</em> thread in the monitor that fires on <em>negedge rst_n</em>,
+            immediately drains the in-flight FIFO, and broadcasts a reset event through a separate
+            analysis port — causing both the scoreboard's delay line (x_prev) and the coverage counter
+            to resynchronize. The testbench successfully handled 5 mid-test resets including
+            back-to-back consecutive pulses, with zero spurious mismatches.
+          </p>
+          <p class="content-body">
+            Reaching 100% coverage required one additional directed sequence targeting the
+            <em>high_positive</em> output bin (values 64–126). With random inputs, most outputs
+            either saturate to +127 or clip to 0 via ReLU, statistically skipping the middle range.
+            I calculated mathematically that x[n]=50 with x[n-1]=0 produces y = (1200 + 0 + 256) >> 4 = 91,
+            which falls squarely in [64:126], and designed a targeted sequence that alternates
+            x=50 and x=0 to hit that bin deterministically on every other output.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Protocol Checking with SystemVerilog Assertions</h2>
+          <p class="content-body">
+            Functional coverage tells you what scenarios were tested; assertions tell you whether the
+            DUT behaved correctly in every cycle. I added four SVA properties directly inside the
+            interface, where they have direct access to all signals and fire automatically without
+            any testbench code needing to call them.
+          </p>
+          <p class="content-body">
+            The most important property, <em>p_in_valid_stable</em>, uses the |=> (implies-next-cycle)
+            operator to enforce the AXI-stream rule: if <em>in_valid</em> is high and <em>in_ready</em>
+            is low, then <em>in_valid</em> must still be high on the next clock edge.
+            Dropping it early would cause the DUT to silently miss the transaction.
+            Similarly, <em>p_out_valid_stable</em> and <em>p_out_data_stable</em> guard the stall path:
+            once <em>out_valid</em> asserts, it cannot drop and <em>out_data</em> cannot change
+            until the downstream consumer acknowledges with <em>out_ready</em>.
+            A fourth property, <em>p_out_valid_after_reset</em>, fires on <em>$rose(rst_n)</em> to verify
+            that the pipeline is always empty one cycle after reset — catching any state register
+            that fails to initialize correctly.
+          </p>
+          <p class="content-body">
+            All four assertions passed with zero violations across all 419 test transactions and
+            5 mid-test resets, confirming that the valid/ready protocol was never broken
+            by either the DUT's FSM or the testbench driver throughout the entire simulation.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-block reverse">
+        <div class="image-slot">
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="projects/images/project2_action_response.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_distance_tracking.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/project2_initialize_actionserver.png" alt="Initialize Action Server">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+            <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="content-text">
+          <h2 class="content-title">Results: Full Verification Closure</h2>
+          <p class="content-body">
+            The final simulation run across the complete master test sequence — 250 random samples,
+            an impulse response, 30 saturation stress samples, 16 directed boundary samples,
+            20 mid-range output samples, and 40 backpressure stall samples, interrupted by
+            5 randomized mid-test resets — produced:
+          </p>
+          <ul style="margin-bottom: 1.25rem;">
+            <li><strong>419 / 419 SCOREBOARD_PASS</strong> — zero mismatches between DUT output and the golden reference model across all inputs including math corner cases, post-reset samples, and stalled transfers.</li>
+            <li><strong>100% functional coverage</strong> — all coverpoints, crosses, and the reset covergroup closed completely. cp_sample_in, cp_sample_out, cp_mode, cp_backpressure, cx_mode_backpressure, cx_input_output, and reset_cg all at 100%.</li>
+            <li><strong>0 UVM_ERROR, 0 UVM_FATAL</strong> — no assertion violations, no scoreboard failures, no monitor underflows.</li>
+            <li><strong>5 mid-test resets handled cleanly</strong> — including back-to-back consecutive pulses — with the scoreboard resynchronizing correctly on every event.</li>
+          </ul>
+          <p class="content-body">
+            The ReLU canary bin in <em>cp_sample_out</em> — the <em>unexpected_neg</em> bin covering
+            outputs in [−128:−1] — recorded zero hits throughout all 419 transactions,
+            confirming that the ReLU activation correctly eliminates all negative outputs with no exceptions.
+          </p>
         </div>
       </div>
  
@@ -793,18 +1128,49 @@
         <div class="image-slot">
           <div class="carousel" data-carousel>
             <div class="carousel-track">
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 1</p></div></div>
-              <div class="carousel-slide"><div class="image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Image 2</p></div></div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_coverage_100.png" alt="Action Client Response Handling">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_scoreboard_summary.png" alt="Distance Tracking Logic">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/images/fpga_uvm_report.png" alt="Initialize Action Server">
+              </div>
             </div>
             <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
             <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
-            <div class="carousel-dots"></div>
+            <div class="carousel-label"></div> <div class="carousel-dots"></div>
           </div>
         </div>
         <div class="content-text">
           <h2 class="content-title">Results & Learnings</h2>
-          <p class="content-body">What did you ship? What accuracy did the model achieve on unseen classes with limited examples?</p>
-          <p class="content-body">What would you explore next — meta-learning, larger backbones, or cross-domain transfer?</p>
+          <p class="content-body">
+            Debugging this environment mostly meant reading waveforms alongside the UVM log in parallel rather than trusting either one
+            alone. The reset waveform is a good example: watching <code>rst_n</code> drop and recover mid-stream while
+            <code>wide_accum</code> snaps back to zero, and confirming the very next scoreboard comparison after release still matches,
+            was the actual proof that the resynchronization logic worked — the coverage number alone wouldn't have told me that.
+          </p>
+          <p class="content-body">
+            The final regression closed clean: 419 of 419 sample comparisons matched with zero mismatches across 5 injected reset
+            events, 100% functional coverage across all three covergroups (output values, test intent, and reset events), and a UVM
+            report of 910 informational messages with zero warnings, errors, or fatals.
+          </p>
+          <p class="content-body">
+            The current design is a single, time-multiplexed MAC reused across taps — area-efficient, but it stalls until each sample
+            fully drains before accepting the next one. The natural next step, and the one that ties most directly back to what pulled
+            me into this project, is replacing that with an array of parallel MAC units fed by a tapped delay line, so a new sample can
+            enter the pipeline every cycle instead of waiting — a small, honest step toward the systolic structures that make real AI
+            accelerators fast. That version introduces a genuinely new hazard class worth verifying: samples overlapping in-flight
+            through the pipeline, rather than the single-sample-at-a-time hazards this version already handles.
+          </p>
+          <p class="content-body">
+            More broadly, this project reinforced something I don't think you get from RTL alone: a design that "looks correct" and a
+            design that's been proven correct against every boundary condition, including the ones a human wouldn't think to check by
+            hand, are very different claims. Working through the math to find provably unreachable coverage bins, rather than assuming
+            they were test gaps, was the part of this project that felt closest to how verification actually works at the scale these
+            chips are built.
+          </p>
         </div>
       </div>
  
